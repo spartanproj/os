@@ -22,9 +22,9 @@ void kernel_main(void)
 		YELLOW = 14
 		WHITE = 15
 	*/
-	// for (int i =0;i<16;i++) {
-	// 	printf("Hello, kernel World!",i,0);
-	// }
+	for (int i =0;i<16;i++) {
+		printf("Hello, kernel World!\n",i);
+	}
 	printf("Hello",15);
 	printf("World",15);
 }

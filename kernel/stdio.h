@@ -78,11 +78,7 @@ void write_to(char c, uint8_t color, size_t x, size_t y)
  
 void putchar(char c) 
 {
-    if(c == '\n')
-    {
-        terminal_row = terminal_row + 1;
-        terminal_column = -1;
-    }
+    
 	write_to(c, terminal_color, terminal_column, terminal_row);
 	if (++terminal_column == VGA_WIDTH) {
 		terminal_column = 0;
@@ -93,8 +89,15 @@ void putchar(char c)
  
 void write(const char* data, size_t size) 
 {
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++) {
+        if(data[i] == '\n')
+        {
+            terminal_row = terminal_row + 1;
+            terminal_column = 0;
+            i++;
+        }
 		putchar(data[i]);
+    }
 }
  
 void printf(const char* data,uint8_t clr) 
