@@ -90,18 +90,22 @@ void putchar(char c)
 void write(const char* data, size_t size) 
 {
 	for (size_t i = 0; i < size; i++) {
-        if(data[i] == '\n')
-        {
+        // if(data[i] == '\n')
+        // {
+        //     terminal_row = terminal_row + 1;
+        //     terminal_column = 0;
+        while (data[i]=='\n') {
             terminal_row = terminal_row + 1;
             terminal_column = 0;
             i++;
         }
+        
 		putchar(data[i]);
     }
+    setclr(15);
 }
  
-void printf(const char* data,uint8_t clr) 
+void printf(const char* data) 
 {
-    setclr(clr);
 	write(data, strlen(data));
 }

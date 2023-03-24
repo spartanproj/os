@@ -4,7 +4,7 @@ void kernel_main(void)
 {
 	term_init();
 	/*
-	printf colors
+	setclr colors
 		BLACK = 0
 		DARK_BLUE = 1
 		DARK_GREEN = 2
@@ -23,8 +23,9 @@ void kernel_main(void)
 		WHITE = 15
 	*/
 	for (int i =0;i<16;i++) {
-		printf("Hello, kernel World!\n",i);
+		setclr(i);
+		printf("Hello, kernel World!\n");
 	}
-	printf("Hello",15);
-	printf("World",15);
+	printf("Hello\n\n");
+	printf("World");
 }
