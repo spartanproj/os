@@ -22,10 +22,33 @@ void kernel_main(void)
 		YELLOW = 14
 		WHITE = 15
 	*/
-	for (int i =0;i<16;i++) {
-		setclr(i);
-		printf("Hello, kernel World!\n");
-	}
-	printf("Hello\n\n");
-	printf("World");
+/*
+
+  
+
+
+
+
+
+
+                                      
+
+
+
+                                                     
+*/	
+	setclr(4);
+	printf(" 8\"\"\"8                   8\"\"\"88 8\"\"\"\"8 \n");
+	printf("8   8 eeee eeeee  eeeee 8    8 8      \n");
+	printf("8e  8 8    8   8  8   8 8    8 8eeeee \n");
+	printf("88  8 8eee 8eee8e 8e  8 8    8     88 \n");
+	printf("88  8 88   88   8 88  8 8    8 e   88 \n");
+	printf("88  8 88ee 88   8 88ee8 8eeee8 8eee88 \n");
+	printf("\n\n");
+	printf("                       eeeee  eeee     8\"\"\"88 8\"\"\"\"8 \n");
+	printf("eeeee eeeee    e    e  8   8  8  8     8    8 8    \n");
+	printf("8   8 8   8    8    8  8eee8  8        8    8 8eeeee \n");
+	printf("8eee8 8e  8    eeeeee 88   88 8eeee    8    8     88 \n");
+	printf("88  8 88  8    88   8 88   88 8   8    8    8 e   88 \n");
+	printf("88  8 88  8    88   8 88eee88 8eee8    8eeee8 8eee88 \n");
 }
