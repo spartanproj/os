@@ -29,11 +29,11 @@ void kernel_main(void)
 	setclr(15,0);
 	printf("\n\n\nWelcome to NerdOS. Enjoy your stay :)");
 	int i=0;
-	while (i<200000000) {
+	while (i<100000000) {
 		i++;
 		printf("\0");
 	}
 	clear();
-	kprintf("Hi from kernel.h");
-	abort("TEST","gobbledegook");
+	kprintd("Boot into kernel:",1);
+	
 }
