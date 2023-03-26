@@ -1,5 +1,6 @@
 #include "stdio.h"
- 
+#include "abort.h" //stdio here also
+#include "kernel.h"
 void kernel_main(void) 
 {
 	term_init();
@@ -22,33 +23,17 @@ void kernel_main(void)
 		YELLOW = 14
 		WHITE = 15
 	*/
-/*
-
-  
-
-
-
-
-
-
-                                      
-
-
-
-                                                     
-*/	
-	setclr(4);
-	printf(" 8\"\"\"8                   8\"\"\"88 8\"\"\"\"8 \n");
-	printf("8   8 eeee eeeee  eeeee 8    8 8      \n");
-	printf("8e  8 8    8   8  8   8 8    8 8eeeee \n");
-	printf("88  8 8eee 8eee8e 8e  8 8    8     88 \n");
-	printf("88  8 88   88   8 88  8 8    8 e   88 \n");
-	printf("88  8 88ee 88   8 88ee8 8eeee8 8eee88 \n");
-	printf("\n\n");
-	printf("                       eeeee  eeee     8\"\"\"88 8\"\"\"\"8 \n");
-	printf("eeeee eeeee    e    e  8   8  8  8     8    8 8    \n");
-	printf("8   8 8   8    8    8  8eee8  8        8    8 8eeeee \n");
-	printf("8eee8 8e  8    eeeeee 88   88 8eeee    8    8     88 \n");
-	printf("88  8 88  8    88   8 88   88 8   8    8    8 e   88 \n");
-	printf("88  8 88  8    88   8 88eee88 8eee8    8eeee8 8eee88 \n");
+	setclr(2,0);
+	printf(" _   _                  _  _____  _____           \n| \\ | |                | ||  _  |/  ___|          \n|  \\| |  ___  _ __   __| || | | |\\ `--.           \n| . ` | / _ \\| '__| / _` || | | | `--. \\          \n| |\\  ||  __/| |   | (_| |\\ \\_/ //\\__/ /          \n\\_| \\_/ \\___||_|    \\__,_| \\___/ \\____/           \n\n\n  ___                 _____   ____   _____  _____ ");
+	printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
+	setclr(15,0);
+	printf("\n\n\nWelcome to NerdOS. Enjoy your stay :)");
+	int i=0;
+	while (i<200000000) {
+		i++;
+		printf("\0");
+	}
+	clear();
+	kprintf("Hi from kernel.h");
+	abort("TEST","gobbledegook");
 }
