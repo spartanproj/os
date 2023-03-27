@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "tty.h"
+#define __nerd__
 #if !defined(__i386__)
 #error "Enjoy your debugging :)"
 #endif
