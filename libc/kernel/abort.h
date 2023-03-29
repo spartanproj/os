@@ -1,9 +1,6 @@
-#ifdef stdio.h
-#include <stdio.h>
-#endif
+
 // #include <stdlib.h>
- 
-__attribute__((__noreturn__))
+ #include "kernel.h"
 void abort(const char* debug, const char* msg) {
 	setclr(11,0);
 	printf("\nkernel: ");

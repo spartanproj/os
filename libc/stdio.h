@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-#include "tty.h"
+#include "io/tty.h"
 #if !defined(__i386__)
 #error "Enjoy your debugging :)"
 #endif

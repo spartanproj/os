@@ -1,8 +1,40 @@
-#include "stdio.h"
-#include "abort.h" //stdio here also
-#include "kernel.h"
-void kernel_main(void) 
+/*
+* Copyright (C) 2014  Arjun Sreedharan
+* License: GPL version 2 or higher http://www.gnu.org/licenses/gpl.html
+*/
+#include "../libc/kernel/idt.h"
+#include "../libc/stdio.h"
+#include <stdbool.h>
+bool enter=false;
+void keyboard_handler_main(void)
 {
+	unsigned char status;
+	char keycode;
+
+	/* write EOI */
+	write_port(0x20, 0x20);
+
+	status = read_port(KEYBOARD_STATUS_PORT);
+	/* Lowest bit of status will be set if buffer is not empty */
+	if (status & 0x01) {
+		keycode = read_port(KEYBOARD_DATA_PORT);
+		if(keycode < 0)
+			return;
+
+		if(keycode == ENTER_KEY_CODE) {
+			mse_nl();
+			printf("\n");
+			return;
+		}
+
+		vidptr[current_loc++] = keyboard_map[(unsigned char) keycode];
+		vidptr[current_loc++] = 0x07;
+	}
+}
+void kmain(void)
+{
+	#include "../libc/stdio.h"
+	#include "../libc/kernel/abort.h"
 	term_init();
 	/*
 	setclr colors
@@ -33,7 +65,13 @@ void kernel_main(void)
 		i++;
 		printf("\0");
 	}
+	
 	clear();
 	kprintd("Boot into kernel:",1);
 	
+
+	idt_init();
+	kb_init();
+	mse_nl();
+	while(1);
 }

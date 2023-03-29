@@ -1,6 +1,4 @@
-#ifdef stdio.h
-#include "stdio.h"
-#endif
+
 
 void kprintf(const char* msg) {
     setclr(11,0);
