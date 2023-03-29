@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-#include "io/tty.h"
+#include <io/tty.h>
 #if !defined(__i386__)
 #error "Enjoy your debugging :)"
 #endif
@@ -25,13 +25,13 @@ void putchar(char c)
 	}
 }
  
-void write(const char* data, size_t size) 
+void write(const char* data, size_t size, bool magic) 
 {
 	int n;
 	for (size_t i = 0; i < size; i++) {
         while (data[i]=='\n') {
             terminal_row = terminal_row + 1;
-            terminal_column = 0;
+            terminal_column = -magic;
             i++;
         }
         
@@ -49,5 +49,15 @@ void printf(const char* data)
         }
     }
 	}
-	write(data, strlen(data));
+	write(data, strlen(data),0);
+}
+void nprintf(const char* data) {
+	if (terminal_row>=VGA_HEIGHT) {
+		for(int i = 0; i < VGA_HEIGHT; i++){
+        for (int m = 0; m < VGA_WIDTH; m++){
+            terminal_buffer[i * VGA_WIDTH + m] = terminal_buffer[(i + 1) * VGA_WIDTH + m];
+        }
+    }
+	}
+	write(data, strlen(data),1);
 }

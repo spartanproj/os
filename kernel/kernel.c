@@ -2,8 +2,9 @@
 * Copyright (C) 2014  Arjun Sreedharan
 * License: GPL version 2 or higher http://www.gnu.org/licenses/gpl.html
 */
-#include "../libc/kernel/idt.h"
-#include "../libc/stdio.h"
+#include <kernel/idt.h>
+#include <stdio.h>
+
 #include <stdbool.h>
 bool enter=false;
 void keyboard_handler_main(void)
@@ -67,11 +68,13 @@ void kmain(void)
 	}
 	
 	clear();
-	kprintd("Boot into kernel:",1);
-	
+	kprintd("Boot into kernel: ",1);
 
 	idt_init();
 	kb_init();
+	nprintf("\n");
+	kprintd("Initialise IDT and keyboard input: ",1);
+	mse_nl();
 	mse_nl();
 	while(1);
 }
