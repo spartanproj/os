@@ -1,7 +1,7 @@
 
 // #include <stdlib.h>
  #include "kernel.h"
-void abort(const char* debug, const char* msg) {
+void panic(const char* debug, const char* msg) {
 	setclr(11,0);
 	printf("\nkernel: ");
 	setclr(4,0);

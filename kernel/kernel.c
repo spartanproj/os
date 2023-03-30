@@ -1,41 +1,52 @@
-/*
-* Copyright (C) 2014  Arjun Sreedharan
-* License: GPL version 2 or higher http://www.gnu.org/licenses/gpl.html
-*/
 #include <kernel/idt.h>
 #include <stdio.h>
-
+#include <util.h>
 #include <stdbool.h>
-bool enter=false;
+#include "keys.h"
+unsigned char typed[1024];
+int counter=0;
 void keyboard_handler_main(void)
 {
 	unsigned char status;
 	char keycode;
-
-	/* write EOI */
 	write_port(0x20, 0x20);
 
 	status = read_port(KEYBOARD_STATUS_PORT);
-	/* Lowest bit of status will be set if buffer is not empty */
 	if (status & 0x01) {
 		keycode = read_port(KEYBOARD_DATA_PORT);
 		if(keycode < 0)
 			return;
 
-		if(keycode == ENTER_KEY_CODE) {
+		else if(keycode == ENTER_KEY_CODE) {
 			mse_nl();
 			printf("\n");
+			for (int y=0;y<1024;y++) {
+				typed[y]=0;
+			}
 			return;
-		}
-
+		} else if(keycode==0x20) {
+			
+		} else {
+			typed[counter]=keyboard_map[(unsigned char) keycode];
+			counter++;
+			printf("\n");
+			mse_nl();
+			printf(keys(keycode));
+		} 
+		
 		vidptr[current_loc++] = keyboard_map[(unsigned char) keycode];
 		vidptr[current_loc++] = 0x07;
 	}
 }
+// int enter(char code[]) {
+// 	printf("\n");
+// 	putchar(code);
+// 	printf("pressed;");
+// 	mse_nl();
+// }
 void kmain(void)
 {
-	#include "../libc/stdio.h"
-	#include "../libc/kernel/abort.h"
+	#include <kernel/kernel.h>
 	term_init();
 	/*
 	setclr colors
