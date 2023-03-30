@@ -5,6 +5,7 @@
 #include "keys.h"
 unsigned char typed[1024];
 int counter=0;
+bool printrn=false;
 void keyboard_handler_main(void)
 {
 	unsigned char status;
@@ -29,9 +30,9 @@ void keyboard_handler_main(void)
 		} else {
 			typed[counter]=keyboard_map[(unsigned char) keycode];
 			counter++;
-			printf("\n");
-			mse_nl();
-			printf(keys(keycode));
+			if (printrn==true) {
+				printf(keys(keycode));
+			}
 		} 
 		
 		vidptr[current_loc++] = keyboard_map[(unsigned char) keycode];
@@ -87,5 +88,7 @@ void kmain(void)
 	kprintd("Initialise IDT and keyboard input: ",1);
 	mse_nl();
 	mse_nl();
+	printf("\n");
+	printrn=true;
 	while(1);
 }
