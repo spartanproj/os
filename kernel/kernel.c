@@ -39,12 +39,6 @@ void keyboard_handler_main(void)
 		vidptr[current_loc++] = 0x07;
 	}
 }
-// int enter(char code[]) {
-// 	printf("\n");
-// 	putchar(code);
-// 	printf("pressed;");
-// 	mse_nl();
-// }
 void kmain(void)
 {
 	#include <kernel/kernel.h>
@@ -74,7 +68,7 @@ void kmain(void)
 	setclr(15,0);
 	printf("\n\n\nWelcome to NerdOS. Enjoy your stay :)");
 	int i=0;
-	while (i<100000000) {
+	while (i<50000000) {
 		i++;
 		printf("\0");
 	}
