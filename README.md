@@ -30,7 +30,7 @@ A: do you have everything installed?
 - "port" a rewritten [`Rosemary`](http://github.com/werdl/rosemary)
 #### Compiling
 ##### You will need:
-- a gcc cross compiler (and binutils) for i386 or i686((here)[https://wiki.osdev.org/GCC_Cross-Compiler]'s how to get that)
+- a gcc cross compiler (and binutils) for i386 or i686([here](https://wiki.osdev.org/GCC_Cross-Compiler)'s how to get that)
 - qemu-system-i386 (`sudo apt install -y qemu-system-i386` or the package manager on your distro (check the internet if you're not on Linux or it's not working.))
 - patience
 ##### Steps:
