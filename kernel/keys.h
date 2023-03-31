@@ -110,6 +110,50 @@ const char * keys(int value) {
             return "/";
         case 0x36:
             return "R-SHIFT";
+        case 0x37:
+            return "-";
+        case 0x38:
+            return "L-ALT";
+        case 0x39:
+            return " ";
+        case 0x3a:
+            return "CAPS";
+        case 0x3b:
+            return "F1";
+        case 0x3c:
+            return "F2";
+        case 0x3d:
+            return "F3";
+        case 0x3e:
+            return "F4";
+        case 0x3f:
+            return "F5";
+        case 0x40:
+            return "F6";
+        case 0x41:
+            return "F7";
+        case 0x42:
+            return "F8";
+        case 0x43:
+            return "F9";
+        case 0x44:
+            return "F10";
+        case 0x45:
+            return "NUM";
+        case 0x46:
+            return "SCROLL";
+        //some more here
+        case 0x48:
+            return "UP";
+        //more needed
+        case 0x4b:
+            return "LEFT";
+        //more
+        case 0x4d:
+            return "RIGHT";
+        //more
+        case 0x50:
+            return "DOWN";
         default:
             panic("Character wasn't found in switch","Character error.",0);
             return "Error";

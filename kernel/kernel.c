@@ -3,9 +3,14 @@
 #include <util.h>
 #include <stdbool.h>
 #include "keys.h"
-unsigned char typed[1024];
+char * typed[1024];
 int counter=0;
 bool printrn=false;
+int x_gui = 0;
+int y_gui =0;
+char * position[3][3]={{"0,0","1,0","2,0"},
+					   {"0,1","1,1","2,1"},
+					   {"0,2","1,2","2,2"}}; // which gui box you are on
 void keyboard_handler_main(void)
 {
 	unsigned char status;
@@ -21,27 +26,66 @@ void keyboard_handler_main(void)
 		else if(keycode == ENTER_KEY_CODE) {
 			mse_nl();
 			printf("\n");
-			for (int y=0;y<1024;y++) {
-				typed[y]=0;
-			}
+			typed[counter]="ENTER";
+			counter=0;
 			return;
-		} else if(keycode==0x20) {
-			
 		} else {
-			typed[counter]=keyboard_map[(unsigned char) keycode];
+			typed[counter]=keys(keycode);
 			counter++;
+			const char * key=keys(keycode);
 			if (printrn==true) {
-				printf(keys(keycode));
+				printf(key);
 			}
+			if(!move(key)) {
+				printf("\n");
+				printf(prnt(x_gui));
+				printf(",");
+				printf(prnt(y_gui));
+				printf("\n");
+				printf(position[y_gui][x_gui]);
+				mse_nl();
+				mse_nl();
+				mse_nl();
+
+			}
+			// printf(typed[0]);
+			// printf(typed[1]);
 		} 
-		
-		vidptr[current_loc++] = keyboard_map[(unsigned char) keycode];
-		vidptr[current_loc++] = 0x07;
+		setclr(7,0);
+		printf(keys(keycode));
+		setclr(15,0);
 	}
+}
+int move(const char * inp) {
+	bool fail=false;
+	bool up=true;
+	bool down=true;
+	bool left=true;
+	bool right=true;
+	
+	int old_y=y_gui;
+	int old_x=x_gui;
+	if (y_gui>=2) {
+		up=false; // 1 for maximum
+	} else if(y_gui<=0) {
+		down=false;
+	} if(x_gui>=2) {
+		right=false;
+	} else if (x_gui<=0) {
+		left=false;
+	}
+	if (inp=="UP" && up==true) y_gui++; 
+	else if (inp=="DOWN" && down==true) y_gui--;
+	else if (inp=="RIGHT" && right==true) x_gui++;
+	else if (inp=="LEFT" &&left==true) x_gui--;
+	else fail=true;
+	return -fail; // 0 for great, -1 for error
 }
 void kmain(void)
 {
-	#include <kernel/kernel.h>
+	for (int y=0;y<1024;y++) {
+		typed[y]="\0";
+	}
 	term_init();
 	/*
 	setclr colors
@@ -83,6 +127,26 @@ void kmain(void)
 	mse_nl();
 	mse_nl();
 	printf("\n");
-	printrn=true;
-	while(1);
+	setclr(10,0);
+	printf("Type your commands below.\n");
+	mse_nl();
+	setclr(15,0);
+	printrn=false;
+	bool toclear=false;
+	while(1){
+		if (typed[0]=="e" && typed[1]=="c" && typed[2]=="ENTER"){ 
+			printf("HI!");
+			mse_nl();
+			printf("\n");
+			counter=0;
+			toclear=true;
+		}
+		if (toclear==true) {
+			toclear=false;
+			for (int y=0;y<1024;y++) {
+				typed[y]="\0";
+			}
+		}
+		}
+	
 }

@@ -29,8 +29,8 @@ int get_digits (int num)
 
     return 10; /* num > 1000000000 */
 }
-
 char *itoa (int n)
+
 {
     static char temp[10]; // MN that can be replaced by some def?
     int nDigits = 0;
@@ -53,4 +53,25 @@ char *itoa (int n)
     {
         temp[--nDigits] = ((i % 10) + '0'); // modulo is quite slow
     }
+}
+const char * prnt(int number) {
+  switch (number) {
+    case 0:
+      return "0";
+    case 1:
+      return "1";
+    case 2:
+      return "2";
+    case -1:
+      return "-1";
+    case -2:
+      return "-2";
+  }
+}
+bool equals(char* tocheck[1024],const char * refstring) { //check string against ref
+  for (int o=0;o<1024;o++) {
+    if (refstring[o]==tocheck[o]){}
+    else return false;
+  }
+  return true;
 }

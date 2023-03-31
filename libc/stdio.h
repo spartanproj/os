@@ -43,11 +43,14 @@ void write(const char* data, size_t size, bool magic)
 void printf(const char* data) 
 {
 	if (terminal_row>=VGA_HEIGHT) {
-		for(int i = 0; i < VGA_HEIGHT; i++){
-        for (int m = 0; m < VGA_WIDTH; m++){
-            terminal_buffer[i * VGA_WIDTH + m] = terminal_buffer[(i + 1) * VGA_WIDTH + m];
-        }
-    }
+		clear();
+		clear_screen();
+		// for(int i = 0; i < VGA_HEIGHT; i++){
+        
+		// for (int m = 0; m < VGA_WIDTH; m++){
+        //     terminal_buffer[i * VGA_WIDTH + m] = terminal_buffer[(i + 1) * VGA_WIDTH + m];
+        // }
+    // }
 	}
 	write(data, strlen(data),0);
 }
