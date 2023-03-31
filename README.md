@@ -4,17 +4,17 @@
 - maybe ARM but not rn 
 - will just have to rewrite some asm
 #### FAQ
-Q: Why AGPL?
-A: Source code should be available
-Q: Why x86?
-A: Because ARM asm is hard
-Q: Keyboard input isn't working!! oh no!
+Q: Why AGPL?<br>
+A: Source code should be available<br>
+Q: Why x86?<br>
+A: Because ARM asm is hard<br>
+Q: Keyboard input isn't working!! oh no!<br>
 A: it works on my machine...
-   actually the reason is probably your keyboard.
+   actually the reason is probably your keyboard.<br>
    try running with qemu-system-i386
-Q: the makefile isn't working!! help!!!
+Q: the makefile isn't working!! help!!!<br>
 A: do you have everything installed?
-   If you do, try modifying the makefile a bit.
+   If you do, try modifying the makefile a bit.<br>
 #### Things it can do
 - print
 - input (halway through processing)
