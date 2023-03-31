@@ -1,5 +1,5 @@
 ## os
-### Authored by (werdl)[https://github.com/werdl)]
+### Authored by (werdl)[https://github.com/werdl]
 #### x86 OS that can do some things
 - maybe ARM but not rn 
 - will just have to rewrite some asm
