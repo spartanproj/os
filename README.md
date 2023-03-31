@@ -10,8 +10,8 @@ Q: Why x86?<br>
 A: Because ARM asm is hard<br>
 Q: Keyboard input isn't working!! oh no!<br>
 A: it works on my machine...
-   actually the reason is probably your keyboard.<br>
-   try running with qemu-system-i386
+   actually the reason is probably your keyboard.
+try running with qemu-system-i386<br>
 Q: the makefile isn't working!! help!!!<br>
 A: do you have everything installed?
    If you do, try modifying the makefile a bit.<br>
