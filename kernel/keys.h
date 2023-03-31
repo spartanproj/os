@@ -155,8 +155,7 @@ const char * keys(int value) {
         case 0x50:
             return "DOWN";
         default:
-            panic("Character wasn't found in switch","Character error.",0);
-            return "Error";
+            return "?";
     }
 
 
