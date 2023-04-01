@@ -82,7 +82,7 @@ int move(const char * inp) {
 	return -fail; // 0 for great, -1 for error
 }
 bool sudo=false;
-void kmain(void)
+int kmain(void)
 {
 	for (int y=0;y<1024;y++) {
 		typed[y]="\0";
@@ -164,6 +164,10 @@ void kmain(void)
 			} else {
 				printf("You no sudo...\n");
 			} toclear=true;
+		} else if (typed[0]=="g" && typed[1]=="u" && typed[2]=="i" && typed[3]=="ENTER") {
+			printf("Boot into text based GUI");
+			toclear=true;
+			gui();
 		}
 		if (toclear==true) {
 			toclear=false;
@@ -173,4 +177,22 @@ void kmain(void)
 		}
 		}
 	
+}
+int gui() {
+	clear_screen();
+	clear();
+	setclr(15,15);
+	for (int r=0;r<12;r++) {
+		setclr(15,15);
+		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+	}
+		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+		setclr(15,0);
+		printf("hi");
+		setclr(15,15);
+		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+	for (int r=0;r<13;r++) {
+		setclr(15,15);
+		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+	}
 }
