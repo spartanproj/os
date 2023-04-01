@@ -57,7 +57,7 @@ const char * keys(int value) {
         case 0x1b:
             return "}";
         case 0x1c:
-            return "Enter";
+            return "\n";
         case 0x1d:
             return "L-CTRL";
         case 0x1e:

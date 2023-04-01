@@ -5,3 +5,4 @@ go:
 run:
 	qemu-system-i386 -kernel kernel.bin
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
+	rm -rf boot/boot.o kc.o kasm.o kernel.bin

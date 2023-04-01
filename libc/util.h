@@ -69,9 +69,24 @@ const char * prnt(int number) {
   }
 }
 bool equals(char* tocheck[1024],const char * refstring) { //check string against ref
-  for (int o=0;o<1024;o++) {
+  for (int o=0;o<strlen(refstring);o++) {
     if (refstring[o]==tocheck[o]){}
     else return false;
   }
   return true;
+}
+bool instr(char ** tocheck, char * tofind) {
+  int u=0;
+  while (tocheck[u]!=tofind) {
+    u++;
+    if (u>strlen(tocheck)) {
+      return false;
+    }
+  }
+  return true;
+}
+void append(char * main, char * letter) {
+  int x=strlen(main);
+  main[x]=letter;
+  main[x+1]="\0";
 }
