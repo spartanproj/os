@@ -22,10 +22,9 @@ A: do you have everything installed?
 - kernel print
 - IDT
 - memory allocation that is there but I haven't used...
+- A few basic commands, but mainly shells will be in userspace
 #### Plans
 - libc
-- keyboard 
-- shell
 - text based GUI
 - "port" a rewritten [`Rosemary`](http://github.com/werdl/rosemary)
 #### Compiling

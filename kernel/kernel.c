@@ -81,6 +81,7 @@ int move(const char * inp) {
 	else fail=true;
 	return -fail; // 0 for great, -1 for error
 }
+bool sudo=false;
 void kmain(void)
 {
 	for (int y=0;y<1024;y++) {
@@ -150,6 +151,19 @@ void kmain(void)
 			printf("\n");
 			counter=0;
 			toclear=true;
+		} else if (typed[0]=="l" && typed[1]=="o"&&typed[2]=="g"&&typed[3]=="i" && typed[4]=="n" &&typed[5]==" " && typed[6]=="p" && typed[7]=="a"&&typed[8]=="s"&&typed[9]=="s"&&typed[10]=="ENTER") {
+			printf("Logged in as sudo\n");
+			mse_nl();
+			sudo=true;
+			toclear=true;
+		} else if(typed[0]=="h"&&typed[1]=="l"&&typed[2]=="t"&&typed[3]=="ENTER") {
+			if (sudo==true) {
+				printf("HALTING");
+				panic("processes halted by sudo","hlt",1);
+				return 0;
+			} else {
+				printf("You no sudo...\n");
+			} toclear=true;
 		}
 		if (toclear==true) {
 			toclear=false;
