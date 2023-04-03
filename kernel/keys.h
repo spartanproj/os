@@ -30,6 +30,8 @@ const char * keys(int value) {
             return("-");
         case 0x0d:
             return ("=");
+        case 0x0e:
+            return "BKSP";
         case 0x0f:
             return "Tab";
         case 0x10:

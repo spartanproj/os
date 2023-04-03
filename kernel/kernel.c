@@ -29,13 +29,16 @@ void keyboard_handler_main(void)
 			typed[counter]="ENTER";
 			counter=0;
 			return;
-		} else {
+		} else if (keys(keycode)=="BKSP") {
+			for (int y=0;y<1024;y++) {
+				typed[y]="";
+			}
+			return;
+		}else {
 			typed[counter]=keys(keycode);
 			counter++;
 			const char * key=keys(keycode);
-			if (printrn==true) {
-				printf(key);
-			}
+			
 			if(!move(key)) {
 				printf("\n");
 				printf(prnt(x_gui));
@@ -51,6 +54,13 @@ void keyboard_handler_main(void)
 			// printf(typed[0]);
 			// printf(typed[1]);
 		} 
+		if (printrn==true) {
+			printf(keys(keycode));
+			printf(" - hex value - 0x");
+			char buffer[15];
+			itoa(keycode,buffer,10);
+			printf(buffer);
+		}
 		setclr(7,0);
 		printf(keys(keycode));
 		setclr(15,0);
@@ -82,10 +92,11 @@ int move(const char * inp) {
 	return -fail; // 0 for great, -1 for error
 }
 bool sudo=false;
+bool quitgui=false;
 int kmain(void)
 {
 	for (int y=0;y<1024;y++) {
-		typed[y]="\0";
+		typed[y]="";
 	}
 	term_init();
 	/*
@@ -134,8 +145,22 @@ int kmain(void)
 	setclr(15,0);
 	printrn=false;
 	bool toclear=false;
+	printf("Debugging ON or OFF?\n");
+	bool q=true;
 	while(1){
-		if (typed[0]=="e" && typed[1]=="c" && typed[2]=="ENTER"){ 
+		if (typed[0]=="o" && typed[1]=="n" && q==true && typed[2]=="ENTER") {
+			q=false;
+			printrn=true;
+			printf("Ok, debugging on!\n");
+			mse_nl();
+			toclear=true;
+		} else if (typed[0]=="o" && typed[1]=="f" && typed[2]=="f" && typed[3]=="ENTER" && q==true) {
+			q=false;
+			printf("Ok, no debugging\n");
+			mse_nl();
+			toclear=true;
+		}
+		 if (typed[0]=="e" && typed[1]=="c" && typed[2]=="ENTER"){ 
 			printf("HI!");
 			mse_nl();
 			printf("\n");
@@ -168,7 +193,16 @@ int kmain(void)
 			printf("Boot into text based GUI");
 			toclear=true;
 			gui();
+		} else if (typed[0]=="q" && typed[1]=="ENTER") {
+			quitgui=true;
+			toclear=true;
+		} else if (typed[0]=="e"&&typed[1]=="d"&&typed[2]=="i"&&typed[3]=="t"&& typed[4]=="ENTER") {
+			text_edit();
+			toclear=true;
 		}
+		else if (typed[0]=="L-CTRL"&&typed[1]=="L-ALT"&& typed[2]=="t") {
+			panic("end","hlt",1);
+		} 
 		if (toclear==true) {
 			toclear=false;
 			for (int y=0;y<1024;y++) {
@@ -178,6 +212,7 @@ int kmain(void)
 		}
 	
 }
+
 int gui() {
 	clear_screen();
 	clear();
@@ -195,4 +230,17 @@ int gui() {
 		setclr(15,15);
 		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 	}
+	if (quitgui==true) {
+		clear();
+		clear_screen();
+		return 0;
+	}
+}
+int text_edit() {
+	clear_screen();
+	clear();
+	setclr(10,0);
+	printf(" ~\n");
+	mse_nl();
+	setclr(15,0);
 }

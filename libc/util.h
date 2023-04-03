@@ -29,31 +29,7 @@ int get_digits (int num)
 
     return 10; /* num > 1000000000 */
 }
-char *itoa (int n)
 
-{
-    static char temp[10]; // MN that can be replaced by some def?
-    int nDigits = 0;
-    int i = 0;
- 
-    if(n == 0)
-    {
-        temp[0] = '0';
-        temp[1] = '\0';
- 
-       return temp; // or just return "0"; ?
-    }
- 
-    nDigits = get_digits(n); // fast function to count digits..
- 
-    temp[nDigits] = '\0'; // ..needed just here
- 
-
-   for(i = n; i >= 1; i /= 10) // whole method stinks
-    {
-        temp[--nDigits] = ((i % 10) + '0'); // modulo is quite slow
-    }
-}
 const char * prnt(int number) {
   switch (number) {
     case 0:
@@ -89,4 +65,35 @@ void append(char * main, char * letter) {
   int x=strlen(main);
   main[x]=letter;
   main[x+1]="\0";
+}
+int itoa(int value, char *sp, int radix)
+{
+    char tmp[16];// be careful with the length of the buffer
+    char *tp = tmp;
+    int i;
+    unsigned v;
+    int sign = (radix == 10 && value < 0);    
+    if (sign)
+        v = -value;
+    else
+        v = (unsigned)value;
+
+    while (v || tp == tmp)
+    {
+        i = v % radix;
+        v /= radix;
+        if (i < 10)
+          *tp++ = i+'0';
+        else
+          *tp++ = i + 'a' - 10;
+    }
+    int len = tp - tmp;
+    if (sign) 
+    {
+        *sp++ = '-';
+        len++;
+    }
+    while (tp > tmp)
+        *sp++ = *--tp;
+    return len;
 }
