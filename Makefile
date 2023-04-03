@@ -6,3 +6,6 @@ run:
 	qemu-system-i386 -kernel kernel.bin
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
+game:
+	gcc games/main.c -o main.gcc.out
+	./main.gcc.out
