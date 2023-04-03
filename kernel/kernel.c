@@ -145,6 +145,8 @@ int kmain(void)
 	setclr(15,0);
 	printrn=false;
 	bool toclear=false;
+	const char * user="bob";
+	printf("Logged in as ");
 	printf("Debugging ON or OFF?\n");
 	bool q=true;
 	while(1){
@@ -212,7 +214,6 @@ int kmain(void)
 		}
 	
 }
-
 int gui() {
 	clear_screen();
 	clear();
