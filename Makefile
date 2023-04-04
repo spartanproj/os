@@ -7,5 +7,5 @@ run:
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
 game:
-	gcc games/main.c -o main.gcc.out
+	gcc games/main.c -o main.gcc.out -g 
 	./main.gcc.out

@@ -147,6 +147,8 @@ int kmain(void)
 	bool toclear=false;
 	const char * user="bob";
 	printf("Logged in as ");
+	printf(user);
+	printf("\n");
 	printf("Debugging ON or OFF?\n");
 	bool q=true;
 	while(1){
@@ -187,6 +189,7 @@ int kmain(void)
 			if (sudo==true) {
 				printf("HALTING");
 				panic("processes halted by sudo","hlt",1);
+				break;
 				return 0;
 			} else {
 				printf("You no sudo...\n");
@@ -204,6 +207,7 @@ int kmain(void)
 		}
 		else if (typed[0]=="L-CTRL"&&typed[1]=="L-ALT"&& typed[2]=="t") {
 			panic("end","hlt",1);
+			break;
 		} 
 		if (toclear==true) {
 			toclear=false;
