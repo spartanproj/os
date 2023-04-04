@@ -39,4 +39,4 @@ A: do you have everything installed?
 - run `make && make run` to compile and run it. Then ctrl-c in your terminal to clean everything up.
 ##### I don't have make!
 - Just copy the commands in one by one
-- If you are on Windows, I recommend you try WSL or Cygwin.
+- If you are on Windows, I recommend you try WSL (Debian/similar) or Cygwin.
