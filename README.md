@@ -2,7 +2,7 @@
 ### Good luck with install (you'll need it)
 ![logo](https://user-images.githubusercontent.com/116349156/230002827-37baf026-b826-40c4-85a0-2b2b54621a1b.png)
 ### Authored by [werdl](https://github.com/werdl)
-![Lines of code](https://sloc.xyz/github/spartanproj/os)
+![Lines of code](https://sloc.xyz/github/spartanproj/os) ![License](https://badgen.net/github/license/spartanproj/os?color=red) ![Last commit](https://badgen.net/github/last-commit/spartanproj/os?color=orange)
 #### x86 OS that can do some things
 - maybe ARM but not rn 
 - will just have to rewrite some asm
