@@ -1,0 +1,19 @@
+on: [push]
+name: Counter
+
+jobs:
+  count:
+    runs-on: ubuntu-latest
+    name: runner
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Launch the local action
+        uses: ./ # Uses an action in the root directory
+        id: badge
+        with:
+          debug: true
+          directory: ./
+          badge: ./ex/badge.svg
+          ignore: 'node_modules/|README'
