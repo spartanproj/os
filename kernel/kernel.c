@@ -3,6 +3,7 @@
 #include <util.h>
 #include <stdbool.h>
 #include "keys.h"
+#include <random/rand.h>
 char * typed[1024];
 int counter=0;
 bool printrn=false;
@@ -145,10 +146,14 @@ int kmain(void)
 	setclr(15,0);
 	printrn=false;
 	bool toclear=false;
-	const char * user="bob";
+	char * user="bob";
 	printf("Logged in as ");
 	printf(user);
 	printf("\n");
+	char buff[15];
+	srand(rnd);
+	itoa(rand(),buff,10);
+	printf(buff);
 	printf("Debugging ON or OFF?\n");
 	bool q=true;
 	while(1){
