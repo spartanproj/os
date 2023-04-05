@@ -10,3 +10,5 @@ run:
 game:
 	gcc games/main.c -o main.gcc.out -g 
 	./main.gcc.out
+gclean:
+	rm -rf main.gcc.out
