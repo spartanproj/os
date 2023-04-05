@@ -1,4 +1,5 @@
-## os
+# NerdOS
+### Good luck with install (you'll need it)
 ![logo](https://user-images.githubusercontent.com/116349156/230002827-37baf026-b826-40c4-85a0-2b2b54621a1b.png)
 
 
