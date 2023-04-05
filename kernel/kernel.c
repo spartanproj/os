@@ -150,10 +150,11 @@ int kmain(void)
 	printf("Logged in as ");
 	printf(user);
 	printf("\n");
-	char buff[15];
+	// char buff[15];
+	// srand(rnd);
+	// itoa(rand(),buff,10);
+	// printf(buff);
 	srand(rnd);
-	itoa(rand(),buff,10);
-	printf(buff);
 	printf("Debugging ON or OFF?\n");
 	bool q=true;
 	while(1){
@@ -213,7 +214,13 @@ int kmain(void)
 		else if (typed[0]=="L-CTRL"&&typed[1]=="L-ALT"&& typed[2]=="t") {
 			panic("end","hlt",1);
 			break;
-		} 
+		}  else if (typed[0]=="r" && typed[1]=="a" && typed[2]=="n" && typed[3]=="d" && typed[4]=="ENTER") {
+			char buff[15];
+			itoa(rand(),buff,10);
+			printf(buff);
+			printf("\n");
+			toclear=true;
+		}
 		if (toclear==true) {
 			toclear=false;
 			for (int y=0;y<1024;y++) {
