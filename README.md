@@ -21,10 +21,12 @@ A: do you have everything installed?
    If you do, try modifying the makefile a bit.<br>
 #### Things it can do
 - print
-- input (halway through processing)
+- input
 - kernel panic 😎
 - kernel print
 - IDT
+- print integers of any base
+- random numbers (done with Unix system time)
 - memory allocation that is there but I haven't used...
 - A few basic commands, but mainly shells will be in userspace
 #### Plans
@@ -33,13 +35,17 @@ A: do you have everything installed?
 - "port" a rewritten [`Rosemary`](http://github.com/werdl/rosemary)
 #### Compiling
 ##### You will need:
-- a gcc cross compiler (and binutils) for i386 or i686([here](https://wiki.osdev.org/GCC_Cross-Compiler)'s how to get that)
-- qemu-system-i386 (`sudo apt install -y qemu-system-i386` or the package manager on your distro (check the internet if you're not on Linux or it's not working.))
+- A Unix-like environment (Windows no, BSD variants probably, MacOS maybe but hard, Cygwin yes, Linux yes, other old Unix variants (eg Irix) probably?? maybe source install for packages)
+- a gcc cross compiler (and binutils) for i386 or i686 ([here](https://wiki.osdev.org/GCC_Cross-Compiler)'s how to get that)
+- qemu-system-i386 (`brew install -y qemu-system-i386` or the package manager on your distro (check the internet if it's not working.))
 - patience
 ##### Steps:
 - `git clone` this repo
 - install to your dir of choice.
 - run `make && make run` to compile and run it. Then ctrl-c in your terminal to clean everything up.
 ##### I don't have make!
-- Just copy the commands in one by one
+- If you don't have make, get it. You will need a Unix env anyway so it will pay off
 - If you are on Windows, I recommend you try WSL (Debian/similar) or Cygwin.
+#### How does random work?
+##### In a nutshell:
+At compile time, a bash script is run that grabs the Unix epoch time using `date +%s`. This is then written into a little header file along with some other RNG stuff. **DO NOT CHANGE THE NUMBERS** unless you know what you are doing!
