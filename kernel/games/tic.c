@@ -1,8 +1,5 @@
-#include <stdio.h>
-#include <time.h> //rand
-#include <stdlib.h> //rand
-#include <stdbool.h>
-int prnt(int inp) {
+
+int printt(int inp) {
     if (inp==3) {
         printf("-");
     }
@@ -18,27 +15,27 @@ int tries=0;
 int render(int tl, int tm, int tr,
            int ml, int mm, int mr,
            int bl, int bm, int br){
-    prnt(tl);
+    printt(tl);
     printf(" ");
-    prnt(tm);
+    printt(tm);
     printf(" ");
-    prnt(tr);
+    printt(tr);
     printf("\n");
 
-    prnt(ml);
+    printt(ml);
     printf(" ");
-    prnt(mm);
+    printt(mm);
     printf(" ");
-    prnt(mr);
+    printt(mr);
     printf(" -- ");
-    printf("%d",tries);
+    printn(tries);
     printf("\n");
 
-    prnt(bl);
+    printt(bl);
     printf(" ");
-    prnt(bm);
+    printt(bm);
     printf(" ");
-    prnt(br);
+    printt(br);
     printf("\n");
     printf("_____\n");
 }
@@ -75,18 +72,36 @@ char * getInput() {
 void win(int move) {
     if (move==1) {
         printf("Victory for Noughts O, on go number ");
-        printf("%d",tries-1);
-
+        printn(tries-1);
     } else if (move==0) {
         printf("Victory for crosses X, on go number ");
-        printf("%d",tries-1);
+        printn(tries-1);
     } else if (move==-1) {
         printf("Nobody wins.");
     }
 }
-int main(int argc, char ** argv) {
-    srand(time(NULL));
-    render(3,3,3,3,3,3,3,3,3);
+int tic() {
+    for (int a=0;a<9;a++) {
+        p[a]=3;
+    }
+    tries=0;
+    clear();
+    clear_screen();
+    srand(rnd);
+    int u=0;
+    printf(" #######             #######                  #######               \n");
+    printf("    #    #  ####        #      ##    ####        #     ####  ###### \n");
+    printf("    #    # #    #       #     #  #  #    #       #    #    # #      \n");
+    printf("    #    # #            #    #    # #            #    #    # #####  \n");
+    printf("    #    # #            #    ###### #            #    #    # #      \n");
+    printf("    #    # #    #       #    #    # #    #       #    #    # #      \n");
+    printf("    #    #  ####        #    #    #  ####        #     ####  ###### ");         
+    while (u<65000000) {
+		u++;
+		printf("\0");
+	}
+    clear();
+    clear_screen();
     
     // render(p[0],p[1],p[2],p[3],p[4],p[5],p[6],p[7],p[8]);
     
@@ -109,10 +124,11 @@ int main(int argc, char ** argv) {
         
         if (tries>9) {
             win(-1);
-            return 0;
+            break;
         } else {
             inp=getInput();
         }
+        
         
         
         if(inp=="tl" && p[0]==3){
@@ -137,8 +153,15 @@ int main(int argc, char ** argv) {
             faile=true;
             goto whil;
         }
+        int i=0;
         
         render(p[0],p[1],p[2],p[3],p[4],p[5],p[6],p[7],p[8]);
+        while (i<35000000) {
+		i++;
+		printf("\0");
+	    }
+        clear();
+        clear_screen();
         // printf("%s",inp);
         // printf("\n");
     }

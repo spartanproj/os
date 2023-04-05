@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include "keys.h"
 #include <random/rand.h>
+#include "games/tic.c"
 char * typed[1024];
 int counter=0;
 bool printrn=false;
@@ -210,6 +211,14 @@ int kmain(void)
 		} else if (typed[0]=="e"&&typed[1]=="d"&&typed[2]=="i"&&typed[3]=="t"&& typed[4]=="ENTER") {
 			text_edit();
 			toclear=true;
+		} else if (typed[0]=="t" && typed[1]=="i" && typed[2]=="c" && typed[3]=="ENTER") {
+			tic();
+			toclear=true;
+			printf("\n\n");
+			setclr(10,0);
+			printf("Type your commands below.\n");
+			mse_nl();
+			setclr(15,0);
 		}
 		else if (typed[0]=="L-CTRL"&&typed[1]=="L-ALT"&& typed[2]=="t") {
 			panic("end","hlt",1);

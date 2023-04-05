@@ -63,4 +63,5 @@ void setclr(enum vga_color colorfg, enum vga_color colorbg)
 }
 void clear(void) {
 	term_init();
+	printf(" ");
 }

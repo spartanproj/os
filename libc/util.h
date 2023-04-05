@@ -97,3 +97,8 @@ int itoa(int value, char *sp, int radix)
         *sp++ = *--tp;
     return len;
 }
+void printn(int num) {
+  char buf[15];
+  itoa(num,buf,10);
+  printf(buf);
+}
