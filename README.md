@@ -1,5 +1,6 @@
 ## os
 <img style="height:25%;width:25%;" src="https://user-images.githubusercontent.com/106704354/229363944-79ecb9e9-2ea2-4f7d-b981-fac3d16d395f.svg"></img>
+![logo](https://user-images.githubusercontent.com/106704354/229363944-79ecb9e9-2ea2-4f7d-b981-fac3d16d395f.svg)
 ### Authored by [werdl](https://github.com/werdl)
 #### x86 OS that can do some things
 - maybe ARM but not rn 
