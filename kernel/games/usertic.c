@@ -80,6 +80,7 @@ void win(int move) {
         printf("Nobody wins.");
     }
 }
+        char * inp;
 int tic() {
     for (int a=0;a<9;a++) {
         p[a]=3;
@@ -107,6 +108,7 @@ int tic() {
     int move=0;
     bool faile=false;
     while (1) {
+        inp="NO ENTERED";
         whil:
         
         if (faile==true) {
@@ -115,7 +117,7 @@ int tic() {
             tries++;
         }
         move=tries%2;
-        char * inp;
+
         if (checkwin()==true) {
             win(move);
             break;
@@ -125,7 +127,11 @@ int tic() {
             win(-1);
             break;
         } else {
-            inp=getInput();
+            printf("It is the move of ");
+            printn(move);
+            while (inp=="NO ENTERED") {
+                printf("\0");
+            }
         }
         
         

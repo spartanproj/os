@@ -5,7 +5,9 @@
 #include "keys.h"
 #include <random/rand.h>
 #include "games/tic.c"
+#include "util/ascii.h"
 char * typed[1024];
+char * history;
 int counter=0;
 bool printrn=false;
 int x_gui = 0;
@@ -158,6 +160,8 @@ int kmain(void)
 	srand(rnd);
 	printf("Debugging ON or OFF?\n");
 	bool q=true;
+	bool playing=false;
+	int toss;
 	while(1){
 		if (typed[0]=="o" && typed[1]=="n" && q==true && typed[2]=="ENTER") {
 			q=false;
@@ -227,6 +231,43 @@ int kmain(void)
 			char buff[15];
 			itoa(rand(),buff,10);
 			printf(buff);
+			printf("\n");
+			toclear=true;
+		} else if (typed[0]=="c" && typed[1]=="o" && typed[2]=="i" && typed[3]=="n" && typed[4]=="ENTER") {
+			playing=true;
+			toss=rand()%2;
+			
+			printf("Enter your number (0 or 1)\n");
+			toclear=true;
+		} else if (typed[0]=="0" && typed[1]=="ENTER" && playing==true) {
+			setclr(5,0);
+			printf("toss was....\n");
+			printn(toss);
+			printf("\n");
+			setclr(15,0);
+			if(toss==0) {
+				printf("You win! Good job!");
+				playing=false;
+			} else {
+				printf("Not this time...");
+				playing=false;
+			}
+		} else if (typed[0]=="1" && typed[1]=="ENTER" && playing==true) {
+			setclr(5,0);
+			printf("toss was....\n");
+			printn(toss);
+			printf("\n");
+			setclr(15,0);
+			if(toss==1) {
+				printf("You win! Good job!");
+				playing=false;
+			} else {
+				printf("Not this time...");
+				playing=false;
+			}
+			
+		} else if (typed[0]=="h" && typed[1]=="i" && typed[2]=="s" && typed[3]=="ENTER") {
+			printf(history);
 			printf("\n");
 			toclear=true;
 		}
