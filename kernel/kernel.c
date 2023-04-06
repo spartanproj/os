@@ -246,10 +246,10 @@ int kmain(void)
 			printf("\n");
 			setclr(15,0);
 			if(toss==0) {
-				printf("You win! Good job!");
+				printf("You win! Good job!\n");
 				playing=false;
 			} else {
-				printf("Not this time...");
+				printf("Not this time...\n");
 				playing=false;
 			}
 		} else if (typed[0]=="1" && typed[1]=="ENTER" && playing==true) {
@@ -259,10 +259,10 @@ int kmain(void)
 			printf("\n");
 			setclr(15,0);
 			if(toss==1) {
-				printf("You win! Good job!");
+				printf("You win! Good job!\n");
 				playing=false;
 			} else {
-				printf("Not this time...");
+				printf("Not this time...\n");
 				playing=false;
 			}
 			
