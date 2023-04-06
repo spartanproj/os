@@ -16,3 +16,6 @@ int main () {
     srand();
     printf("%d",rand());
 }
+
+
+// write a function to say hi
