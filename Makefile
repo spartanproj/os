@@ -11,4 +11,7 @@ game:
 	gcc games/main.c -o main.gcc.out -g 
 	./main.gcc.out
 gclean:
-	rm -rf main.gcc.out
+	rm -rf main.gcc.out 21.gcc.out
+21:
+	gcc games/21.c -o 21.gcc.out -g
+	./21.gcc.out
