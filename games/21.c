@@ -9,8 +9,8 @@ size_t strlen(const char* str)
 		len++;
 	return len;
 }
-bool computer;
-bool human;
+bool computer=false;
+bool human=false;
 int toss() {
     int choice=rand()%2;
     if (choice==0) {
@@ -49,30 +49,6 @@ int comp(int lastnum) {
     return nl;
 }
 int hum(int lastnum) {
-
-
-    // if (nthdig(5,inputa)==0 && nthdig(4,inputa)==0 &&nthdig(3,inputa)==0) {
-    //     if (nthdig(2, inputa)==0) {
-    //     } else {
-    //         lastnum+=3;
-    //         return lastnum;
-    //     }
-    //     if (nthdig(1, inputa)==0) {
-    //     } else {
-    //         lastnum+=2;
-    //         return lastnum;
-    //     }
-    //     if (nthdig(0, inputa)==0) {
-    //         printf("Please enter a number!");
-    //         hum(lastnum);
-    //     } else {
-    //         lastnum+=1;
-    //         return lastnum;
-    //     }
-    // } 
-    // if (inputa>1000 && inputa<10000) {
-        
-    // }
     int inputa;
     scanf("%d",&inputa);
     if (inputa==0) {
@@ -80,7 +56,10 @@ int hum(int lastnum) {
     } else {
         lastnum++;
     }
-
+    if (lastnum==21) {
+        printf("Computer wins! Good Job!");
+        return -1;
+    }
 
     inputa=0;
     scanf("%d",&inputa);
@@ -90,7 +69,10 @@ int hum(int lastnum) {
     } else {
         lastnum++;
     }
-
+    if (lastnum==21) {
+        printf("Computer wins! Good Job!");
+        return -1;
+    }
 
     inputa=0;
     scanf("%d",&inputa);
@@ -99,6 +81,10 @@ int hum(int lastnum) {
         return lastnum;
     } else {
         lastnum++;
+    }
+    if (lastnum==21) {
+        printf("Computer wins! Good Job!");
+        return -1;
     }
     return lastnum;
    
@@ -110,13 +96,26 @@ int main() {
     srand(time(NULL));
     int first=toss();
     // printf("%d",first);
-    int last=comp(0);
-    while (last!=21) {
-        int x=hum(last);
-        last=comp(x);
-        if (last==-1) {
-            break;
-            return 0;
+    printf("Enter your numbers one by one, then type 0 when done.\n");
+    if (computer==true) {
+        int last=comp(0);
+        while (last!=21) {
+            int x=hum(last);
+            last=comp(x);
+            if (last==-1) {
+                break;
+                return 0;
+            }
+        }
+    } else if (human==true) {
+        int last = hum(0);
+        while (last!=21) {
+            int x=comp(last);
+            last=hum(x);
+            if (last==-1) {
+                break;
+                return 0;
+            }
         }
     }
 }
