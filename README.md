@@ -28,6 +28,8 @@ try running with qemu-system-i386<br>
 - random numbers (done with Unix system time)
 - memory allocation that is there but I haven't used...
 - A few basic commands, but mainly shells will be in userspace
+- Tic tac toe & coin flip
+- 21 Game
 #### Plans
 - libc
 - text based GUI
