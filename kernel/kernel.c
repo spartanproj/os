@@ -6,6 +6,7 @@
 #include <random/rand.h>
 #include "games/tic.c"
 #include "util/ascii.h"
+#include "games/21.c"
 char * typed[1024];
 char * history;
 int counter=0;
@@ -252,6 +253,7 @@ int kmain(void)
 				printf("Not this time...\n");
 				playing=false;
 			}
+			toclear=true;
 		} else if (typed[0]=="1" && typed[1]=="ENTER" && playing==true) {
 			setclr(5,0);
 			printf("toss was....\n");
@@ -265,10 +267,66 @@ int kmain(void)
 				printf("Not this time...\n");
 				playing=false;
 			}
+			toclear=true;
 			
 		} else if (typed[0]=="h" && typed[1]=="i" && typed[2]=="s" && typed[3]=="ENTER") {
-			printf(history);
-			printf("\n");
+			printf("hi");
+			for (int y=0;y<1024;y++) {
+				typed[y]="\0";
+			}
+			while (1) {
+				if (typed[0]=="3"){
+					printf("hi");
+					break;
+				}
+			}
+			toclear=true;
+		} else if (typed[0]=="2" && typed[1]=="1"&& typed[2]=="ENTER") {
+			int lastnum=comp(0);
+			for (int y=0;y<1024;y++) {
+				typed[y]="\0";
+			}
+			int typedno=0;
+			while (1) {
+				if (typed[0]=="0") {
+					break;
+				} else if (typed[0]!="\0"){
+					typedno++;
+					lastnum++;
+					for (int y=0;y<1024;y++) {
+						typed[y]="\0";
+					}
+				}
+				if (typedno>=3) {
+					typedno=0;
+					break;
+				}
+			}
+			int x;
+			while (lastnum<21) {
+				lastnum=comp(lastnum);
+				while (1) {
+					if (typed[0]=="0") {
+						break;
+					} else if (typed[0]!="\0"){
+						typedno++;
+						lastnum++;
+						for (int y=0;y<1024;y++) {
+							typed[y]="\0";
+						}
+					}
+					if (typedno>=3) {
+						typedno=0;
+						break;
+					}
+				}
+				printn(lastnum);
+				break;
+				if (lastnum>=21) {break;}
+			}
+			printf("hmm");
+			toclear=true;
+
 			toclear=true;
 		}
 		if (toclear==true) {

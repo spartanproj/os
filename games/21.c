@@ -87,10 +87,6 @@ int hum(int lastnum) {
         return -1;
     }
     return lastnum;
-   
-
-
-    
 }
 int main() {
     srand(time(NULL));
