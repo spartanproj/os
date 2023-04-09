@@ -7,12 +7,14 @@
 #include "games/tic.c"
 #include "util/ascii.h"
 #include "games/21.c"
-char * typed[1024];
+#include <fs/fs.h>
+
 char * history;
 int counter=0;
 bool printrn=false;
 int x_gui = 0;
 int y_gui =0;
+char * typed[1024];
 char * position[3][3]={{"0,0","1,0","2,0"},
 					   {"0,1","1,1","2,1"},
 					   {"0,2","1,2","2,2"}}; // which gui box you are on
@@ -96,6 +98,8 @@ int move(const char * inp) {
 	else fail=true;
 	return -fail; // 0 for great, -1 for error
 }
+extern char read_port(unsigned short port);
+extern void write_port(unsigned short port, unsigned char data);
 bool sudo=false;
 bool quitgui=false;
 int kmain(void)
@@ -128,15 +132,17 @@ int kmain(void)
 	printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
 	setclr(15,0);
 	printf("\n\n\nWelcome to NerdOS. Enjoy your stay :)");
+	printf("\n");
+	printf(info.contents);
+
 	int i=0;
-	while (i<50000000) {
+	while (i<75000000) {
 		i++;
 		printf("\0");
 	}
 	
 	clear();
 	kprintd("Boot into kernel: ",1);
-
 	idt_init();
 	kb_init();
 	nprintf("\n");
@@ -327,6 +333,10 @@ int kmain(void)
 			printf("hmm");
 			toclear=true;
 
+			toclear=true;
+		} else if (typed[0]=="i" && typed[1]=="n" && typed[2]=="f" && typed[3]=="o" && typed[4]=="ENTER") {
+			printf("\n");
+			printf(info.contents);
 			toclear=true;
 		}
 		if (toclear==true) {

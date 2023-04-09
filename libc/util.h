@@ -102,3 +102,8 @@ void printn(int num) {
   itoa(num,buf,10);
   printf(buf);
 }
+void printh(int num) {
+  char buf[15];
+  itoa(num,buf,16);
+  printf(buf);
+}
