@@ -145,6 +145,7 @@ int kmain(void)
 	kprintd("Boot into kernel: ",1);
 	idt_init();
 	kb_init();
+	fsinit();
 	nprintf("\n");
 	kprintd("Initialise IDT and keyboard input: ",1);
 	mse_nl();
