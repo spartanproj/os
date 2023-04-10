@@ -26,10 +26,11 @@ try running with qemu-system-i386<br>
 - IDT
 - print integers of any base
 - random numbers (done with Unix system time)
-- memory allocation that is there but I haven't used...
+- memory allocation
 - A few basic commands, but mainly shells will be in userspace
 - Tic tac toe & coin flip
 - 21 Game
+- 'filesystem' WIP
 #### Plans
 - libc
 - text based GUI
