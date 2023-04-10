@@ -151,6 +151,9 @@ int kmain(void)
 	mse_nl();
 	mse_nl();
 	printf("\n");
+	char tow[100]="This is in File Number 3";
+	writefs(tow,'w',3);
+	printf(readfs(3).contents);
 	setclr(10,0);
 	printf("Type your commands below.\n");
 	mse_nl();

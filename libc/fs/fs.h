@@ -90,7 +90,7 @@ int writefs(char towrite[1024], char mode,int file) {
     }
 }
 nodes readfs(int file) {
-    char * contentsof;
+    char  contentsof[1024];
     int perm;
     switch (file) {
         case 0: contentsof=root.o0.contents;
