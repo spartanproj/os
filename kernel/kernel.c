@@ -173,6 +173,16 @@ int kmain(void)
 	bool playing=false;
 	int toss;
 	int ucounter=0;
+	writefs("",'w',0);
+	writefs("",'w',1);
+	writefs("",'w',2);
+	writefs("",'w',3);
+	writefs("",'w',4);
+	writefs("",'w',5);
+	writefs("",'w',6);
+	writefs("",'w',7);
+	writefs("",'w',8);
+	writefs("",'w',9);
 	while(1){
 		if (typed[0]=="o" && typed[1]=="n" && q==true && typed[2]=="ENTER") {
 			q=false;
@@ -344,19 +354,28 @@ int kmain(void)
 			toclear=true;
 		} else if (typed[0]=="w" && typed[1]=="r" && typed[2]=="i" && typed[3]=="t" && typed[4]=="ENTER") {
 			writefs("",'w',0);
-			for (int k=5;typed[k]!="\0"&&typed[k]!="ENTER";k++) {
-				writefs(typed[k],'a',0);
+			int up=strnum(typed[5]);
+			for (int k=6;typed[k]!="\0"&&typed[k]!="ENTER";k++) {
+				writefs(typed[k],'a',up);
 			}
+			printf(typed[5]);
 			printf("Done!");
 			mse_nl();
 			printf("\n");
 			toclear=true;
-		} else if (typed[0]=="r" && typed[1]=="e" && typed[2]=="a" && typed[3]=="d" && typed[4]=="ENTER") {
+		} else if (typed[0]=="r" && typed[1]=="e" && typed[2]=="a" && typed[3]=="d" && typed[5]=="ENTER") {
 			char buffe[1024];
-			memcpy(buffe,readfs(0),1024);
+			int wer;
+			if (strnum(typed[4])!=-1) {
+				wer=strnum(typed[4]);
+			} else {
+				goto uconunt;
+			}
+			memcpy(buffe,readfs(wer),1024);
 			printf(buffe);
 			
 			if (ucounter>0) {
+				uconunt:
 				ucounter=0;
 				toclear=true;
 			} else {
