@@ -1,6 +1,6 @@
 
 #include <kernel/abort.h>
-const char * keys(int value) {
+char * keys(int value) {
 
     switch (value) {
         case 0x01:

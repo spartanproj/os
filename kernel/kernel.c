@@ -8,7 +8,9 @@
 #include "util/ascii.h"
 #include "games/21.c"
 #include <fs/fs.h>
-
+int gui();
+int text_edit();
+int move(const char * inp);
 char * history;
 int counter=0;
 bool printrn=false;
@@ -151,9 +153,6 @@ int kmain(void)
 	mse_nl();
 	mse_nl();
 	printf("\n");
-	char tow[100]="This is in File Number 3";
-	writefs(tow,'w',3);
-	printf(readfs(3).contents);
 	setclr(10,0);
 	printf("Type your commands below.\n");
 	mse_nl();
@@ -173,6 +172,7 @@ int kmain(void)
 	bool q=true;
 	bool playing=false;
 	int toss;
+	int ucounter=0;
 	while(1){
 		if (typed[0]=="o" && typed[1]=="n" && q==true && typed[2]=="ENTER") {
 			q=false;
@@ -342,6 +342,27 @@ int kmain(void)
 			printf("\n");
 			printf(info.contents);
 			toclear=true;
+		} else if (typed[0]=="w" && typed[1]=="r" && typed[2]=="i" && typed[3]=="t" && typed[4]=="ENTER") {
+			writefs("",'w',0);
+			for (int k=5;typed[k]!="\0"&&typed[k]!="ENTER";k++) {
+				writefs(typed[k],'a',0);
+			}
+			printf("Done!");
+			mse_nl();
+			printf("\n");
+			toclear=true;
+		} else if (typed[0]=="r" && typed[1]=="e" && typed[2]=="a" && typed[3]=="d" && typed[4]=="ENTER") {
+			char buffe[1024];
+			memcpy(buffe,readfs(0),1024);
+			printf(buffe);
+			
+			if (ucounter>0) {
+				ucounter=0;
+				toclear=true;
+			} else {
+				ucounter++;
+			}
+			
 		}
 		if (toclear==true) {
 			toclear=false;

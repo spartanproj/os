@@ -1,3 +1,4 @@
+
 /* Hardware text mode color constants. */
 enum vga_color {
 	BLACK = 0,
@@ -60,8 +61,4 @@ void term_init(void)
 void setclr(enum vga_color colorfg, enum vga_color colorbg) 
 {
 	terminal_color = vga_entry_color(colorfg,colorbg);
-}
-void clear(void) {
-	term_init();
-	printf(" ");
 }
