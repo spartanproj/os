@@ -34,7 +34,26 @@ try running with qemu-system-i386<br>
 
 ```mermaid
 graph TD
+subgraph Basics
+A1[Print char *]-->B1[Print decimal];
+B1-->C1[Print hex];
+B1-->D1[Print any base];
+C1-->D1;
+B1-->E1[Random numbers];
+F1[Memory];
+G1[Kernel panic];
+A1-->G1;
+C1-->G1;
+A1-->H1[User input];
+H1-->I1[Games];
+I1-->J1[21];
+I1-->K1[Tic tac toe];
+E1-->K1;
+A1-->H1-->L1[Basic shell];
+end
 subgraph Filesystems
+F1-->A;
+F1-->B;
 A[Journaling];
 B-->C[FAT32];
 B-->D[EXT2];
