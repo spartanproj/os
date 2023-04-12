@@ -50,6 +50,18 @@ I1-->J1[21];
 I1-->K1[Tic tac toe];
 E1-->K1;
 A1-->H1-->L1[Basic shell];
+style A1 fill:green;
+style B1 fill:green;
+style C1 fill:green;
+style D1 fill:green;
+style E1 fill:green;
+style F1 fill:green;
+style G1 fill:green;
+style H1 fill:green;
+style I1 fill:green;
+style J1 fill:#8B8000;
+style K1 fill:green;
+style L1 fill:green;
 end
 subgraph Filesystems
 F1-->A;
@@ -60,6 +72,7 @@ B-->D[EXT2];
 A-->B[Custom filesystem];
 end
 subgraph GUI
+A1-->G;
 E[Bitmaps];
 F[Fonts];
 B-->E;
@@ -93,6 +106,7 @@ style A fill:green;
 style L fill:#8B8000;
 style B fill:#8B8000;
 style Filesystems fill:#626619
+style Basics fill:#0a6127
 ```
 #### Plans
 - libc
