@@ -6,6 +6,7 @@ go:
 	ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
 run:
 	qemu-system-i386 -kernel kernel.bin
+clean:
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
 game:

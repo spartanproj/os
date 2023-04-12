@@ -34,4 +34,4 @@ git clone https://github.com/spartanproj/os
 cd os
 make && make run
 echo "To run again type this: \
-make && make run"
+make && make run && make clean"
