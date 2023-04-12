@@ -123,6 +123,10 @@ style Basics fill:#0a6127
 - `git clone` this repo
 - install to your dir of choice.
 - run `make && make run` to compile and run it. Then ctrl-c in your terminal to clean everything up.
+##### It isn't working...
+- Establish if you are on an x86 computer (32-bit or 64-bit). If not, virtualise! It does not work on other architectures.
+- You are on x86...
+- If so, get out your nerd hat, read through the messages, and attempt to self-compile. If you cannot, then 
 ##### I don't have make!
 - If you don't have make, get it. You will need a Unix env anyway so it will pay off
 - If you are on Windows, I recommend you try WSL (Debian/similar) or Cygwin.

@@ -134,6 +134,7 @@ int kmain(void)
 	printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
 	setclr(13,0);
 	printf("\n\n\n Welcome to NerdOS. Enjoy your stay :)");
+	printf("Please ignore slow boot time, it hangs on a while loop! It may be due to the speed of your computer\n");
 	setclr(15,0);
 	printf("\n");
 	printf(info.contents);
