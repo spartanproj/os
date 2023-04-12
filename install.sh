@@ -4,7 +4,7 @@ sudo apt install build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev t
 export PREFIX="$HOME/opt/cross"
 export TARGET=i686-elf
 export PATH="$PREFIX/bin:$PATH"
-curl https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz -o bin.xz
+curl https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz -o bin.tar.xz
 tar xf bin.tar.xz
 
 
