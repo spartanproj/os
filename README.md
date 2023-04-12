@@ -31,6 +31,61 @@ try running with qemu-system-i386<br>
 - Tic tac toe & coin flip
 - 21 Game
 - 'filesystem' WIP
+
+```mermaid
+
+graph TD
+
+A[Journaling];
+
+B-->C[FAT32];
+
+B-->D[EXT2];
+
+A-->B[Custom filesystem];
+
+E[Bitmaps];
+
+F[Fonts];
+
+B-->E;
+
+E-->F;
+
+E-->G[GUI];
+
+F-->I;
+
+I-->H[GUI Games];
+
+E-->I[LibGUI];
+
+I-->J[Porting things];
+
+H-->J;
+
+G-->J;
+
+B-->L[LibC];
+L-->Q[Rosemary];
+J-->Q;
+L-->J;
+
+C-->M[USBs];
+
+D-->M;
+
+L-->P[Userspace];
+
+C-->O[Initrd];
+
+O-->L;
+
+L-->O;
+
+O-->P;
+
+```
 #### Plans
 - libc
 - text based GUI
