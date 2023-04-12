@@ -74,7 +74,7 @@ void idt_init(void)
 	write_port(0xA1 , 0x00);
 
 	/* ICW4 - environment info */
-	write_port(0x21 , 0x01);
+	write_port(0x21 , 0x01);			
 	write_port(0xA1 , 0x01);
 	/* Initialization finished */
 
