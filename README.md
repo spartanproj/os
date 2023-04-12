@@ -33,58 +33,47 @@ try running with qemu-system-i386<br>
 - 'filesystem' WIP
 
 ```mermaid
-
 graph TD
-
+subgraph Filesystems
 A[Journaling];
-
 B-->C[FAT32];
-
 B-->D[EXT2];
-
 A-->B[Custom filesystem];
-
+end
+subgraph GUI
 E[Bitmaps];
-
 F[Fonts];
-
 B-->E;
-
 E-->F;
-
 E-->G[GUI];
-
 F-->I;
-
 I-->H[GUI Games];
-
 E-->I[LibGUI];
-
+end
+subgraph Usability
 I-->J[Porting things];
-
 H-->J;
-
 G-->J;
-
 B-->L[LibC];
 L-->Q[Rosemary];
 J-->Q;
+L-->P[Userspace];
+end
 L-->J;
-
+subgraph External Storage
 C-->M[USBs];
-
 D-->M;
 
-L-->P[Userspace];
-
 C-->O[Initrd];
-
 O-->L;
-
 L-->O;
-
 O-->P;
 
+end
+style A fill:green;
+style L fill:#8B8000;
+style B fill:#8B8000;
+style Filesystems fill:#626619
 ```
 #### Plans
 - libc
