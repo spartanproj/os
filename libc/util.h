@@ -83,6 +83,7 @@ void printn(int num) {
 void printh(int num) {
   char buf[15];
   itoa(num,buf,16);
+  printf("0x");
   printf(buf);
 }
 char *strcat(char *s1, const char *s2)

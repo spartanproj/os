@@ -132,8 +132,9 @@ int kmain(void)
 	setclr(2,0);
 	printf(" _   _                  _  _____  _____           \n| \\ | |                | ||  _  |/  ___|          \n|  \\| |  ___  _ __   __| || | | |\\ `--.           \n| . ` | / _ \\| '__| / _` || | | | `--. \\          \n| |\\  ||  __/| |   | (_| |\\ \\_/ //\\__/ /          \n\\_| \\_/ \\___||_|    \\__,_| \\___/ \\____/           \n\n\n  ___                 _____   ____   _____  _____ ");
 	printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
+	setclr(13,0);
+	printf("\n\n\n Welcome to NerdOS. Enjoy your stay :)");
 	setclr(15,0);
-	printf("\n\n\nWelcome to NerdOS. Enjoy your stay :)");
 	printf("\n");
 	printf(info.contents);
 
@@ -145,14 +146,17 @@ int kmain(void)
 	
 	clear();
 	kprintd("Boot into kernel: ",1);
+	printf("\n");
 	idt_init();
 	kb_init();
-	fsinit();
-	nprintf("\n");
 	kprintd("Initialise IDT and keyboard input: ",1);
 	mse_nl();
 	mse_nl();
 	printf("\n");
+	fsinit();
+	kprintd("Initialise journaling: ",1);
+	printf("\n");
+	mse_nl();
 	setclr(10,0);
 	printf("Type your commands below.\n");
 	mse_nl();
@@ -358,30 +362,37 @@ int kmain(void)
 			for (int k=6;typed[k]!="\0"&&typed[k]!="ENTER";k++) {
 				writefs(typed[k],'a',up);
 			}
+			printf(root.o8.contents);
 			printf(typed[5]);
 			printf("Done!");
+			printf(root.o0.contents);
 			mse_nl();
 			printf("\n");
 			toclear=true;
 		} else if (typed[0]=="r" && typed[1]=="e" && typed[2]=="a" && typed[3]=="d" && typed[5]=="ENTER") {
 			char buffe[1024];
-			int wer;
-			if (strnum(typed[4])!=-1) {
-				wer=strnum(typed[4]);
-			} else {
-				goto uconunt;
+			bool yes=true;
+			if (typed[4]=="0") printf(root.o0.contents);
+			else if (typed[4]=="1") printf(root.o1.contents);
+			else if (typed[4]=="2") printf(root.o2.contents);
+			else if (typed[4]=="3") printf(root.o3.contents);
+			else if (typed[4]=="4") printf(root.o4.contents);
+			else if (typed[4]=="5") printf(root.o5.contents);
+			else if (typed[4]=="6") printf(root.o6.contents);
+			else if (typed[4]=="7") printf(root.o7.contents);
+			else if (typed[4]=="8") printf(root.o8.contents);
+			else if (typed[4]=="9") printf(root.o9.contents);
+			else {yes=false;}
+			if (yes==true) {
+				printf("\n");
 			}
-			memcpy(buffe,readfs(wer),1024);
-			printf(buffe);
+			toclear=true;
 			
-			if (ucounter>0) {
-				uconunt:
-				ucounter=0;
-				toclear=true;
-			} else {
-				ucounter++;
-			}
-			
+		} else if (typed[0]=="d" && typed[1]=="u" && typed[2]=="m" && typed[3]=="p" && typed[4]=="ENTER") {
+			dump();
+			toclear=true;
+		} else if (typed[0]=="p" && typed[1]=="a" && typed[2]=="n" && typed[3]=="i" && typed[4]=="c" && typed[5]=="ENTER" ) {
+			panic("Testing purposes.","Initiated by user",1);
 		}
 		if (toclear==true) {
 			toclear=false;

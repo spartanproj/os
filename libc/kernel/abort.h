@@ -1,6 +1,7 @@
 
 // #include <stdlib.h>
 #include "kernel.h"
+void dump();
 void panic(const char* debug, const char* msg, bool fatal) {
 	setclr(11,0);
 	mse_nl();
@@ -26,7 +27,13 @@ void panic(const char* debug, const char* msg, bool fatal) {
 	printf(debug);
 	setclr(4,0);
 	if (fatal==true) {
-		printf("\n\nHalting proccesses (sorry).");
+		int i=0;
+		while (i<75000000) {
+			i++;
+			printf("\0");
+		}
+		printf("\n\nSending you to dumped data...");
+		dump();
         asm volatile("hlt");
 		printf("abort()\n");
 		while (1) { }
