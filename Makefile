@@ -2,7 +2,7 @@ CFLAGS=
 go:
 	libc/random/rand.sh libc/random/rand
 	nasm -f elf32 boot/boot.asm -o boot/boot.o
-	i686-elf-gcc -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
+	$(HOME/opt/cross/bin/$TARGET)-gcc -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
 	ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
 run:
 	qemu-system-i386 -kernel kernel.bin

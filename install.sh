@@ -1,5 +1,5 @@
 cd $HOME
-sudo apt install qemu
+sudo apt install qemu nasm
 sudo apt install build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo 
 export PREFIX="$HOME/opt/cross"
 export TARGET=i686-elf
@@ -29,3 +29,9 @@ make install-target-libgcc -j 8
 
 export PATH="$HOME/opt/cross/bin:$PATH"
 echo "export PATH=\"$HOME/opt/cross/bin:$PATH\"" >> ~/.bashrc
+
+git clone https://github.com/spartanproj/os
+cd os
+make && make run
+echo "To run again type this: \
+make && make run"
