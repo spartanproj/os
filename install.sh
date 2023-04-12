@@ -29,3 +29,9 @@ make install-target-libgcc -j 8
 
 export PATH="$HOME/opt/cross/bin:$PATH"
 echo "export PATH=\"$HOME/opt/cross/bin:$PATH\"" >> ~/.bashrc
+
+git clone https://github.com/spartanproj/os
+cd os
+make && make run
+echo "To run again type this: \
+make && make run"
