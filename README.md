@@ -126,7 +126,7 @@ style Basics fill:#0a6127
 ##### Steps:
 - `git clone` this repo
 - install to your dir of choice.
-- run `make && make run` to compile and run it. Then ctrl-c in your terminal to clean everything up.
+- run `make && make run && make clean` to compile and run it. Then ctrl-c in your terminal to clean everything up.
 ##### It isn't working...
 - Establish if you are on an x86 computer (32-bit or 64-bit). If not, virtualise! It does not work on other architectures.
 - You are on x86...
