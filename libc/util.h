@@ -86,6 +86,11 @@ void printh(int num) {
   printf("0x");
   printf(buf);
 }
+void printhx(int num) {
+  char buf[15];
+  itoa(num,buf,16);
+  printf(buf);
+}
 char *strcat(char *s1, const char *s2)
 {
     //Pointer should not null pointer

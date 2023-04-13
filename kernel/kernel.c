@@ -8,6 +8,7 @@
 #include "util/ascii.h"
 #include "games/21.c"
 #include <fs/fs.h>
+#include <time/time.h>
 int gui();
 int text_edit();
 int move(const char * inp);
@@ -133,18 +134,15 @@ int kmain(void)
 	printf(" _   _                  _  _____  _____           \n| \\ | |                | ||  _  |/  ___|          \n|  \\| |  ___  _ __   __| || | | |\\ `--.           \n| . ` | / _ \\| '__| / _` || | | | `--. \\          \n| |\\  ||  __/| |   | (_| |\\ \\_/ //\\__/ /          \n\\_| \\_/ \\___||_|    \\__,_| \\___/ \\____/           \n\n\n  ___                 _____   ____   _____  _____ ");
 	printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
 	setclr(13,0);
-	printf("\n\n\n Welcome to NerdOS. Enjoy your stay :)");
-	
+	printf("\n\n\n Welcome to NerdOS. Enjoy your stay :)\n");
+	setclr(11,0);
+	printdate();
 	setclr(15,0);
-	printf("\nPlease ignore slow boot time, it hangs on a while loop! It may be due to the \nspeed of your computer\n");
+	printf("Please ignore slow boot time, it hangs on a while loop! It may be due to the \nspeed of your computer\n");
 	printf("\n");
 	printf(info.contents);
 
-	int i=0;
-	while (i<75000000) {
-		i++;
-		printf("\0");
-	}
+	sleep(3);
 	
 	clear();
 	kprintd("Boot into kernel: ",1);
@@ -395,6 +393,10 @@ int kmain(void)
 			toclear=true;
 		} else if (typed[0]=="p" && typed[1]=="a" && typed[2]=="n" && typed[3]=="i" && typed[4]=="c" && typed[5]=="ENTER" ) {
 			panic("Testing purposes.","Initiated by user",1);
+		} else if (typed[0]=="t" && typed[1]=="i" && typed[2]=="m" && typed[3]=="e" && typed[4]=="ENTER") {
+			printdate();
+			toclear=true;
+		} else if (typed[0]=="s" && typed[1]=="l" && typed[2]=="e" && typed[3]=="e" && typed[4]=="p" && (typed[6]=="ENTER" || typed[7]=="ENTER" || typed[8]=="ENTER")) {
 		}
 		if (toclear==true) {
 			toclear=false;
