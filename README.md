@@ -113,6 +113,7 @@ style B fill:#8B8000;
 style Filesystems fill:#626619
 style Basics fill:#0a6127
 ```
+![BSOD](img/bsod.png)
 #### Plans
 - libc
 - text based GUI
