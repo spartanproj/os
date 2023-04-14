@@ -2,18 +2,27 @@ void printtime(bool seconds) {
     int byte;
     write_port(0x70,(0 << 7)|0x04);
 	byte=read_port(0x71);
+    if (byte<10) {
+        printf("0");
+    }
 	printhx(byte);
 	printf(":");
 
 
     write_port(0x70,(0 << 7)|0x02);
 	byte=read_port(0x71);
+    if (byte<10) {
+        printf("0");
+    }
 	printhx(byte);
     if (seconds) {
 
     printf(":");
     write_port(0x70,(0 << 7)|0x00);
 	byte=read_port(0x71);
+    if (byte<10) {
+        printf("0");
+    }
 	printhx(byte);
     }
 }
@@ -76,4 +85,30 @@ void sleep(int seconds) {
 	    current=read_port(0x71);
         if ((current-init)>=seconds) break;
     }
+}
+void time() {
+    int byte,total;
+    write_port(0x70,(0 << 7)|0x00);
+	byte=read_port(0x71);
+    char bufa[15];
+    itoa(byte,bufa,16);
+    byte=atoi(bufa);
+    total+=byte;
+
+    write_port(0x70,(0 << 7)|0x02);
+	byte=read_port(0x71);
+    char bufb[100];
+    itoa(byte,bufb,16);
+    byte=atoi(bufb);
+    total+=byte*60;
+
+    write_port(0x70,(0 << 7)|0x04);
+	byte=read_port(0x71);
+    char bufc[10000];
+    itoa(byte,bufc,16);
+    byte=atoi(bufc);
+    total+=byte*3600;
+
+
+    printn(total);
 }
