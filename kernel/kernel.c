@@ -395,9 +395,10 @@ int kmain(void)
 			panic("Testing purposes.","Initiated by user",1);
 		} else if (typed[0]=="t" && typed[1]=="i" && typed[2]=="m" && typed[3]=="e" && typed[4]=="ENTER") {
 			printdate();
+			time();
 			toclear=true;
 		} else if (typed[0]=="s" && typed[1]=="l" && typed[2]=="e" && typed[3]=="e" && typed[4]=="p" && (typed[6]=="ENTER" || typed[7]=="ENTER" || typed[8]=="ENTER")) {
-		}
+		} 
 		if (toclear==true) {
 			toclear=false;
 			for (int y=0;y<1024;y++) {
