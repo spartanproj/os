@@ -126,3 +126,10 @@ int strnum(char *num) {
     else if (num=="9")return 9;
     else return -1;
 }
+int atoi(char * str) {
+    int res = 0;
+    for (int i=0;str[i]!='\0';i++) {
+        res=res*10+str[i]-'0';
+    }
+    return res;
+}
