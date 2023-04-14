@@ -124,6 +124,9 @@ style Basics fill:#0a6127
 - a gcc cross compiler (and binutils) for i386 or i686 ([here](https://wiki.osdev.org/GCC_Cross-Compiler)'s how to get that)
 - qemu-system-i386 (`brew install -y qemu-system-i386` or the package manager on your distro (check the internet if it's not working.))
 - patience
+##### I can't compile the cross compiler...
+- It will probably be OK for just running it, but to develop you'll need it
+- You can techically run it with ordinary gcc, but not advised
 ##### Steps:
 - `git clone` this repo
 - install to your dir of choice.

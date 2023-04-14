@@ -1,5 +1,5 @@
 cd $HOME
-sudo apt install qemu nasm
+sudo apt install qemu nasm qemu-system-x86
 sudo apt install build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo 
 export PREFIX="$HOME/opt/cross"
 export TARGET=i686-elf
