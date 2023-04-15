@@ -5,7 +5,7 @@
 #if !defined(__i386__)
 #error "Enjoy your debugging :)"
 #endif
- void printf(const char* data); 
+ void printf(const char * data); 
 
 
 void write_to(char c, uint8_t color, size_t x, size_t y) 
@@ -25,7 +25,7 @@ void putchar(char c)
 	}
 }
  
-void write(const char* data, size_t size, bool magic) 
+void write(const char * data, size_t size, bool magic) 
 {
 	int n;
 	for (size_t i = 0; i < size; i++) {
@@ -43,7 +43,7 @@ void write(const char* data, size_t size, bool magic)
 	term_init();
 	printf(" ");
 }
-void printf(const char* data) 
+void printf(const char * data) 
 {
 	if (terminal_row>=VGA_HEIGHT) {
 		clear();
@@ -57,7 +57,7 @@ void printf(const char* data)
 	}
 	write(data, strlen(data),0);
 }
-void nprintf(const char* data) {
+void nprintf(const char * data) {
 	if (terminal_row>=VGA_HEIGHT) {
 		for(int i = 0; i < VGA_HEIGHT; i++){
         for (int m = 0; m < VGA_WIDTH; m++){

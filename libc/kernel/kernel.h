@@ -1,13 +1,13 @@
 
 
-void kprintf(const char* msg) {
+void kprintf(const char * msg) {
     setclr(11,0);
     printf("kernel: ");
     setclr(15,0);
     printf(msg);
 }
 
-void kprintd(const char* msg, bool second) {
+void kprintd(const char * msg, bool second) {
     kprintf(msg);
     if (second==true) {
         setclr(2,0);

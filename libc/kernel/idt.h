@@ -24,7 +24,7 @@ extern void load_idt(unsigned long *idt_ptr);
 /* current cursor location */
 unsigned int current_loc = 0;
 /* video memory begins at address 0xb8000 */
-char *vidptr = (char*)0xb8000;
+char *vidptr = (char *)0xb8000;
 
 struct IDT_entry {
 	unsigned short int offset_lowerbits;

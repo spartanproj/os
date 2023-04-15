@@ -76,20 +76,20 @@ int itoa(int value, char *sp, int radix)
     return len;
 }
 void printn(int num) {
-  char buf[15];
-  itoa(num,buf,10);
-  printf(buf);
+    char buf[15];
+    itoa(num,buf,10);
+    printf(buf);
 }
 void printh(int num) {
-  char buf[15];
-  itoa(num,buf,16);
-  printf("0x");
-  printf(buf);
+    char buf[15];
+    itoa(num,buf,16);
+    printf("0x");
+    printf(buf);
 }
 void printhx(int num) {
-  char buf[15];
-  itoa(num,buf,16);
-  printf(buf);
+    char buf[15];
+    itoa(num,buf,16);
+    printf(buf);
 }
 char *strcat(char *s1, const char *s2)
 {

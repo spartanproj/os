@@ -2,7 +2,7 @@
 // #include <stdlib.h>
 #include "kernel.h"
 void dump();
-void panic(const char* debug, const char* msg, bool fatal) {
+void panic(const char * debug, const char * msg, bool fatal) {
 	setclr(11,0);
 	mse_nl();
 	printf("\nkernel: ");

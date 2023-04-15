@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-size_t strlen(const char* str) 
+size_t strlen(const char * str) 
 {
 	size_t len = 0;
 	while (str[len])
