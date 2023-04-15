@@ -10,5 +10,5 @@ as updates do not exist yet! :smile:
 
 ## Reporting a Vulnerability
 
-Use an issue <!-- or talk to someone with the nerd role on the discord.
-the link is : https://discord.gg/R5bgPEkFMe -->
+Use an issue or talk to someone with the nerd role on the discord.
+the link is : https://discord.gg/R5bgPEkFMe
