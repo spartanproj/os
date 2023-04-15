@@ -200,6 +200,6 @@ int lkadghsflsdkj(char*ldkgjhlgdkjs) {
 ##### In a nutshell:
 At compile time, a bash script is run that grabs the Unix epoch time using `date +%s`. This is then written into a little header file along with some other RNG stuff. **DO NOT CHANGE THE NUMBERS** unless you know what you are doing!
 
-<!-- ### discord
+### discord
 we have a discord!
-the link is: https://discord.gg/R5bgPEkFMe -->
+the link is: https://discord.gg/R5bgPEkFMe
