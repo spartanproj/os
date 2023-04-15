@@ -18,6 +18,7 @@ bool printrn=false;
 int x_gui = 0;
 int y_gui =0;
 char * typed[1024];
+char typed2[1024];
 char * position[3][3]={{"0,0","1,0","2,0"},
 					   {"0,1","1,1","2,1"},
 					   {"0,2","1,2","2,2"}}; // which gui box you are on
@@ -36,6 +37,12 @@ void keyboard_handler_main(void)
 		else if(keycode == ENTER_KEY_CODE) {
 			mse_nl();
 			printf("\n");
+			if (currentnode==9) {
+				printf("Warning: Journal entries being overwritten\n");
+				currentnode=0;
+			} else {
+				currentnode++;
+			}
 			typed[counter]="ENTER";
 			counter=0;
 			return;
@@ -48,7 +55,7 @@ void keyboard_handler_main(void)
 			typed[counter]=keys(keycode);
 			counter++;
 			const char * key=keys(keycode);
-			
+			writefs(keys(keycode),'a',currentnode);
 			if(!move(key)) {
 				printf("\n");
 				printf(prnt(x_gui));

@@ -174,3 +174,13 @@ void dump() {
     printf("\n| |\\  |  __| | | (_| \\ \\_/ /\\__/ / | |_/ /\\__/ \\ \\_/ | |/ /|_|");
     printf("\n\\_| \\_/\\___|_|  \\__,_|\\___/\\____/  \\____/\\____/ \\___/|___/ (_)");
 }
+int currentnode=0;
+void log(char * tolog) {
+    if (currentnode==9) {
+        currentnode=0;
+        printf("Warning: Overwriting data in node 0 due to overflow\n");
+        mse_nl();
+    }
+    writefs(tolog,'w',currentnode);
+    currentnode++;
+}
