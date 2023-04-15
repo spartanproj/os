@@ -1,4 +1,5 @@
 cd $HOME
+sudo apt update
 sudo apt install qemu nasm qemu-system-x86
 sudo apt install build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo 
 export PREFIX="$HOME/opt/cross"
