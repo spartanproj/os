@@ -1,7 +1,7 @@
 cd $HOME
 sudo apt update
-sudo apt install qemu nasm qemu-system-x86
-sudo apt install build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo 
+sudo apt install -y qemu nasm qemu-system-x86
+sudo apt install -y build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo 
 export PREFIX="$HOME/opt/cross"
 export TARGET=i686-elf
 export PATH="$PREFIX/bin:$PATH"
