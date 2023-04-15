@@ -15,6 +15,7 @@ int move(const char * inp);
 char * history;
 int counter=0;
 bool printrn=false;
+bool debug=false;
 int x_gui = 0;
 int y_gui =0;
 char * typed[1024];
@@ -38,7 +39,9 @@ void keyboard_handler_main(void)
 			mse_nl();
 			printf("\n");
 			if (currentnode==9) {
-				printf("Warning: Journal entries being overwritten\n");
+				if (debug) {
+					printf("Warning: Journal entries being overwritten\n");
+				}	
 				currentnode=0;
 			} else {
 				currentnode++;
@@ -173,6 +176,7 @@ int kmain(void)
 	mse_nl();
 	setclr(15,0);
 	printrn=false;
+	debug=false;
 	bool toclear=false;
 	char * user="bob";
 	printf("Logged in as ");
@@ -183,7 +187,7 @@ int kmain(void)
 	// itoa(rand(),buff,10);
 	// printf(buff);
 	srand(rnd);
-	printf("Debugging ON or OFF?\n");
+	printf("Debugging ON, OFF or SOME?\n");
 	bool q=true;
 	bool playing=false;
 	int toss;
@@ -202,6 +206,7 @@ int kmain(void)
 		if (typed[0]=="o" && typed[1]=="n" && q==true && typed[2]=="ENTER") {
 			q=false;
 			printrn=true;
+			debug=true;
 			printf("Ok, debugging on!\n");
 			mse_nl();
 			toclear=true;
@@ -210,6 +215,11 @@ int kmain(void)
 			printf("Ok, no debugging\n");
 			mse_nl();
 			toclear=true;
+		} else if (typed[0]=="s" && typed[1]=="o" && typed[2]=="m" && typed[3]=="e" && typed[4]=="ENTER" && q==true){
+			printf("Ok, some debugging on!\n");
+			mse_nl();
+			q=false;
+			debug=true;
 		}
 		 if (typed[0]=="e" && typed[1]=="c" && typed[2]=="ENTER"){ 
 			printf("HI!");
