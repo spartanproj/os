@@ -25,6 +25,6 @@ gclean:
 	./21.gcc.out
 normalgcc:
 	libc/random/rand.sh libc/random/rand
-	gcc -m32-ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
+	gcc -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
 	ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
 nothing:
