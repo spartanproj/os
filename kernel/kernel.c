@@ -411,7 +411,8 @@ int kmain(void)
 				buf6=atoi(typed[6]);
 			}
 			int time=buf6+buf7;
-			for (int t=time;t>0;t--) {
+			printn(time);
+			for (int t=time-1;t>0;t--) {
 				sleep(1);
 				printn(t);
 			}
