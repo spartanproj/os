@@ -38,7 +38,7 @@ if which i686-elf-gcc; then
     make run
     make clean
 else
-    $(shell echo "Consider cross-compiling! Follow the tutorial linked in the README")
+    $(echo "Consider cross-compiling! Follow the tutorial linked in the README")
     make normalgcc
     make run
     make clean

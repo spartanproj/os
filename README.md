@@ -133,6 +133,7 @@ style Basics fill:#0a6127
 - run `make` to compile and run it. Then ctrl-c in your terminal to clean everything up.
 - The script will work out what you have and haven't installed.
 ##### It isn't working...
+- If you are ssh, telnet, multipass etc then add the -curses flag to qemu in the Makefile.
 - Establish if you are on an x86 computer (32-bit or 64-bit). If not, virtualise! It does not work on other architectures.
 - You are on x86...
 - If so, get out your nerd hat, read through the messages, and attempt to self-compile. If you cannot, then 
