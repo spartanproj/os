@@ -1,9 +1,12 @@
 CFLAGS=
-go:
+first: 
+	chmod +x shell/run.sh
+	shell/run.sh
+elfgcc:
 	libc/random/rand.sh libc/random/rand
 	nasm -f elf32 boot/boot.asm -o boot/boot.o
-	$(HOME/opt/cross/bin/$TARGET)-gcc -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
-	ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
+	i686-elf-gcc -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
+	i686-elf-ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
 run:
 	qemu-system-i386 -rtc base=localtime -kernel kernel.bin
 cmdrun: 
@@ -20,3 +23,8 @@ gclean:
 21:
 	gcc games/21.c -o 21.gcc.out -g
 	./21.gcc.out
+normalgcc:
+	libc/random/rand.sh libc/random/rand
+	gcc -m32-ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
+	ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
+nothing:
