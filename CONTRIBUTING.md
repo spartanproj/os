@@ -18,8 +18,6 @@ int function(char * input) {
 - Try to ensure names are vaguely relevant
 ```c
 int x = 0;
-```
-```c
 int x=0;
 ```
 - Either is fine, but
