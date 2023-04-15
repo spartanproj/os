@@ -4,9 +4,9 @@
 
 | Version | Supported              |
 | ------- | ------------------     |
-<!-- | v0.2 "wren"  | :heavy_check_mark:|
-| v0.1 "geek"  | :x:               | -->
-as updates do not exist yet! :smile:
+| master | :heavy_check_mark: |
+| v0.2 "wren"  | :x:|
+| v0.1 "geek"  | :x:               |
 
 ## Reporting a Vulnerability
 
