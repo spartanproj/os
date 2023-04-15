@@ -27,7 +27,7 @@ void printtime(bool seconds) {
     }
 }
 void printdate() {
-    printtime(false);
+    printtime(true);
     printf(" - ");
     int byte;
     write_port(0x70,(0 << 7)|0x06);
@@ -108,6 +108,7 @@ void time() {
     itoa(byte,bufc,16);
     byte=atoi(bufc);
     total+=byte*3600;
+
 
 
     printn(total);

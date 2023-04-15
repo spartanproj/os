@@ -76,6 +76,10 @@ void keyboard_handler_main(void)
 		setclr(15,0);
 	}
 }
+int dellast() {
+	typed[counter]="\0";
+	counter--;
+}
 int move(const char * inp) {
 	bool fail=false;
 	bool up=true;
@@ -395,9 +399,23 @@ int kmain(void)
 			panic("Testing purposes.","Initiated by user",1);
 		} else if (typed[0]=="t" && typed[1]=="i" && typed[2]=="m" && typed[3]=="e" && typed[4]=="ENTER") {
 			printdate();
-			time();
 			toclear=true;
-		} else if (typed[0]=="s" && typed[1]=="l" && typed[2]=="e" && typed[3]=="e" && typed[4]=="p" && (typed[6]=="ENTER" || typed[7]=="ENTER" || typed[8]=="ENTER")) {
+		} else if (typed[0]=="s" && typed[1]=="l" && typed[2]=="e" && typed[3]=="e" && typed[4]=="p" && (typed[7]=="ENTER" || typed[8]=="ENTER")) {
+			char buffer[10];
+			memcpy(buffer,typed[6],3);
+			int buf7=0;
+			int buf6=atoi(typed[6])*10;
+			if (typed[7]!="ENTER") {
+				buf7=atoi(typed[7]);
+			} else {
+				buf6=atoi(typed[6]);
+			}
+			int time=buf6+buf7;
+			for (int t=time;t>0;t--) {
+				sleep(1);
+				printn(t);
+			}
+			toclear=true;
 		} 
 		if (toclear==true) {
 			toclear=false;
