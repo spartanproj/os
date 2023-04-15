@@ -175,12 +175,13 @@ int x= 0;
 - should be avoided
 - Don't use unnecessarily complex or long practices
 - Try to not add any flags as far as possible, to catch errors later down the line
+- use comments only when it might not be obvious what is going on
 ### A good program
 ```c
 int atoi(char * str) {
     int res = 0;
     for (int i=0;str[i]!='\0';i++) {
-        res=res*10+str[i]-'0';
+        res=res*10+str[i]-'0'; // string to int conversion
     }
     return res;
 }
