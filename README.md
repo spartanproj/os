@@ -125,8 +125,8 @@ style Basics fill:#0a6127
 - qemu-system-i386 (`brew install -y qemu-system-i386` or the package manager on your distro (check the internet if it's not working.))
 - patience
 #### I can't compile the cross compiler...
-- It will probably be OK for just running it, but to develop you'll need it
-- You can techically run it with ordinary gcc, but not advised
+- You'll probably be OK without for just running it, but to develop you'll need it
+- You can techically run it with ordinary gcc, but not advised (it is a bit odd and you get a load of warnings)
 #### Steps:
 - `git clone` this repo
 - install to your dir of choice.
