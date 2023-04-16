@@ -17,7 +17,8 @@ int counter=0;
 bool printrn=false;
 bool debug=false;
 int x_gui = 0;
-int y_gui =0;
+int y_gui = 0;
+int cmdstyped = 0;
 char * typed[1024];
 char typed2[1024];
 char * position[3][3]={{"0,0","1,0","2,0"},
@@ -46,6 +47,7 @@ void keyboard_handler_main(void)
 			} else {
 				currentnode++;
 			}
+			cmdstyped++;
 			typed[counter]="ENTER";
 			counter=0;
 			return;
@@ -54,7 +56,7 @@ void keyboard_handler_main(void)
 				typed[y]="";
 			}
 			return;
-		}else {
+		} else {
 			typed[counter]=keys(keycode);
 			counter++;
 			const char * key=keys(keycode);
@@ -315,16 +317,25 @@ int kmain(void)
 			toclear=true;
 			
 		} else if (typed[0]=="h" && typed[1]=="i" && typed[2]=="s" && typed[3]=="ENTER") {
-			printf("hi");
-			for (int y=0;y<1024;y++) {
-				typed[y]="\0";
-			}
-			while (1) {
-				if (typed[0]=="3"){
-					printf("hi");
-					break;
-				}
-			}
+			printf(root.o0.contents);
+			printf(" ");
+			printf(root.o1.contents);
+			printf(" ");
+			printf(root.o2.contents);
+			printf(" ");
+			printf(root.o3.contents);
+			printf(" ");
+			printf(root.o4.contents);
+			printf(" ");
+			printf(root.o5.contents);
+			printf(" ");
+			printf(root.o6.contents);
+			printf(" ");
+			printf(root.o7.contents);
+			printf(" ");
+			printf(root.o8.contents);
+			printf(" ");
+			printf(root.o9.contents);
 			toclear=true;
 		} else if (typed[0]=="2" && typed[1]=="1"&& typed[2]=="ENTER") {
 			int lastnum=comp(0);

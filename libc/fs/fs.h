@@ -1,6 +1,6 @@
 #include "../mem/memcpy.h"
 typedef struct fs_node {
-    char perm[3];
+    int number;
     char contents[1024];
 } nodes;
 nodes roots={
