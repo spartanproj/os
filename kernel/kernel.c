@@ -159,7 +159,7 @@ int kmain(void)
 	printf("\n");
 	printf(info.contents);
 
-	sleep(10);
+	sleep(3);
 	
 	clear();
 	kprintd("Boot into kernel: ",1);
@@ -178,6 +178,9 @@ int kmain(void)
 	printf("Type your commands below.\n");
 	mse_nl();
 	setclr(15,0);
+	writ("hi","hello");
+	writ("hmmmmmm","klkl");
+	printf(read("klkl"));
 	printrn=false;
 	debug=false;
 	bool toclear=false;
