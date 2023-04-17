@@ -9,6 +9,7 @@
 #include "games/21.c"
 #include <fs/fs.h>
 #include <time/time.h>
+#include <file/file.h>
 int gui();
 int text_edit();
 int move(const char * inp);
@@ -158,7 +159,7 @@ int kmain(void)
 	printf("\n");
 	printf(info.contents);
 
-	sleep(3);
+	sleep(10);
 	
 	clear();
 	kprintd("Boot into kernel: ",1);
@@ -389,15 +390,12 @@ int kmain(void)
 			printf(info.contents);
 			toclear=true;
 		} else if (typed[0]=="w" && typed[1]=="r" && typed[2]=="i" && typed[3]=="t" && typed[4]=="ENTER") {
-			writefs("",'w',0);
 			int up=strnum(typed[5]);
+			writefs("",'a',up);
 			for (int k=6;typed[k]!="\0"&&typed[k]!="ENTER";k++) {
 				writefs(typed[k],'a',up);
 			}
-			printf(root.o8.contents);
-			printf(typed[5]);
 			printf("Done!");
-			printf(root.o0.contents);
 			mse_nl();
 			printf("\n");
 			toclear=true;

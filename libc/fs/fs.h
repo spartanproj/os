@@ -4,10 +4,10 @@ typedef struct fs_node {
     char contents[1024];
 } nodes;
 nodes roots={
-    "777","Hello from root"
+    0,"Hello from root"
 };
 nodes info={
-    "777","OS: NerdOS \n Version: v0.02 \"ffreestanding\" \n Devs: werdl;thisiscoding1234 \n \
+    1,"OS: NerdOS \n Version: v0.02 \"ffreestanding\" \n Devs: werdl;thisiscoding1234 \n \
 Github: spartanproj/os"
 };
 typedef struct fs {
