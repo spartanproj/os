@@ -5,7 +5,6 @@
 - If you want to install on a non-Debian based system, install these packages: `build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo nasm qemu`
 
 ### Authored by [werdl](https://github.com/werdl)
-
 ![Lines of code](https://sloc.xyz/github/spartanproj/os) ![License](https://badgen.net/github/license/spartanproj/os?color=red) ![Last commit](https://badgen.net/github/last-commit/spartanproj/os?color=orange)
 ![logo](https://user-images.githubusercontent.com/116349156/230002827-37baf026-b826-40c4-85a0-2b2b54621a1b.png)
 ### x86 OS that can do some things
@@ -140,6 +139,12 @@ style Basics fill:#0a6127
 #### I don't have make!
 - If you don't have make, get it. You will need a Unix env anyway so it will pay off
 - If you are on Windows, I recommend you try WSL (Debian/similar) or Cygwin.
+#### I love Windows/can't use anything else
+- Step 1 - install msys2
+- Step 2 - install qemu with the installer on their downloads page
+- Step 3 - obtain a kernel.bin from releases or your friends
+- Step 4 - run `path/to/qemu-system-i386 -rtc base=localtime -kernel path/to/kernel.bin` in msys2 
+I still haven't found a way to compile on Windows, but I am working on it.
 ### Known limitations
 - can't get *nix timestamp, computationally too much
 - sleep function crashes if launched in the last 5ish seconds of a minute
