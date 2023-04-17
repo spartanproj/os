@@ -10,13 +10,14 @@
 #include <fs/fs.h>
 #include <time/time.h>
 #include <file/file.h>
+#include <const.h>
 int gui();
 int text_edit();
 int move(const char * inp);
 char * history;
 int counter=0;
 bool printrn=false;
-bool debug=false;
+bool debug=WARN;
 int x_gui = 0;
 int y_gui = 0;
 int cmdstyped = 0;
@@ -84,9 +85,9 @@ void keyboard_handler_main(void)
 			itoa(keycode,buffer,10);
 			printf(buffer);
 		}
-		setclr(7,0);
+		setclr(DEFTYPE,0);
 		printf(keys(keycode));
-		setclr(15,0);
+		setclr(DEFCOL,0);
 	}
 }
 int dellast() {
@@ -120,46 +121,37 @@ int move(const char * inp) {
 }
 extern char read_port(unsigned short port);
 extern void write_port(unsigned short port, unsigned char data);
-bool sudo=false;
+bool sudo;
+
 bool quitgui=false;
 int kmain(void)
 {
+	if (USER=="root") {sudo=true;}
+	else {sudo=false;}
 	for (int y=0;y<1024;y++) {
 		typed[y]="";
 	}
 	term_init();
-	/*
-	setclr colors
-		BLACK = 0
-		DARK_BLUE = 1
-		DARK_GREEN = 2
-		DARK_CYAN = 3
-		DEEP_RED = 4
-		MAGENTA = 5
-		BROWN = 6
-		LIGHT_GREY = 7
-		DARK_GREY = 8
-		BLUE = 9
-		GREEN = 10
-		CYAN = 11
-		LIGHT_RED = 12
-		LILAC = 13
-		YELLOW = 14
-		WHITE = 15
-	*/
+
 	setclr(2,0);
 	printf(" _   _                  _  _____  _____           \n| \\ | |                | ||  _  |/  ___|          \n|  \\| |  ___  _ __   __| || | | |\\ `--.           \n| . ` | / _ \\| '__| / _` || | | | `--. \\          \n| |\\  ||  __/| |   | (_| |\\ \\_/ //\\__/ /          \n\\_| \\_/ \\___||_|    \\__,_| \\___/ \\____/           \n\n\n  ___                 _____   ____   _____  _____ ");
 	printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
 	setclr(13,0);
-	printf("\n\n\n Welcome to NerdOS. Enjoy your stay :)\n");
+	printf("\n\n\n Welcome to NerdOS. Enjoy your stay :)");
+	if (WARN && sudo) {
+		setclr(12,0);
+		printf("     Caution: you are running as root.\n");
+	} else {
+		printf("\n");
+	}
 	setclr(11,0);
 	printdate();
-	setclr(15,0);
+	setclr(DEFCOL,0);
 	printf("Please ignore slow boot time, it hangs on a while loop! It may be due to the \nspeed of your computer\n");
 	printf("\n");
 	printf(info.contents);
 
-	sleep(3);
+	sleep(BOOT_TIME);
 	
 	clear();
 	kprintd("Boot into kernel: ",1);
@@ -177,16 +169,12 @@ int kmain(void)
 	setclr(10,0);
 	printf("Type your commands below.\n");
 	mse_nl();
-	setclr(15,0);
-	writ("hi","hello");
-	writ("hmmmmmm","klkl");
-	printf(read("klkl"));
+	setclr(DEFCOL,0);
 	printrn=false;
 	debug=false;
 	bool toclear=false;
-	char * user="bob";
 	printf("Logged in as ");
-	printf(user);
+	printf(USER);
 	printf("\n");
 	// char buff[15];
 	// srand(rnd);
@@ -274,7 +262,7 @@ int kmain(void)
 			setclr(10,0);
 			printf("Type your commands below.\n");
 			mse_nl();
-			setclr(15,0);
+			setclr(DEFCOL,0);
 		}
 		else if (typed[0]=="L-CTRL"&&typed[1]=="L-ALT"&& typed[2]=="t") {
 			panic("end","hlt",1);
@@ -296,7 +284,7 @@ int kmain(void)
 			printf("toss was....\n");
 			printn(toss);
 			printf("\n");
-			setclr(15,0);
+			setclr(DEFCOL,0);
 			if(toss==0) {
 				printf("You win! Good job!\n");
 				playing=false;
@@ -310,7 +298,7 @@ int kmain(void)
 			printf("toss was....\n");
 			printn(toss);
 			printf("\n");
-			setclr(15,0);
+			setclr(DEFCOL,0);
 			if(toss==1) {
 				printf("You win! Good job!\n");
 				playing=false;
@@ -459,18 +447,18 @@ int kmain(void)
 int gui() {
 	clear_screen();
 	clear();
-	setclr(15,15);
+	setclr(DEFCOL,15);
 	for (int r=0;r<12;r++) {
-		setclr(15,15);
+		setclr(DEFCOL,15);
 		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 	}
 		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-		setclr(15,0);
+		setclr(DEFCOL,0);
 		printf("hi");
-		setclr(15,15);
+		setclr(DEFCOL,15);
 		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 	for (int r=0;r<13;r++) {
-		setclr(15,15);
+		setclr(DEFCOL,15);
 		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 	}
 	if (quitgui==true) {
@@ -485,5 +473,5 @@ int text_edit() {
 	setclr(10,0);
 	printf(" ~\n");
 	mse_nl();
-	setclr(15,0);
+	setclr(DEFCOL,0);
 }

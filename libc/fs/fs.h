@@ -7,7 +7,7 @@ nodes roots={
     0,"Hello from root"
 };
 nodes info={
-    1,"OS: NerdOS \n Version: v0.02 \"ffreestanding\" \n Devs: werdl;thisiscoding1234 \n \
+    1,"OS: NerdOS \n Version: v0.02 \"wren\" \n Devs: werdl;thisiscoding1234 \n \
 Github: spartanproj/os"
 };
 typedef struct fs {
@@ -109,7 +109,7 @@ char * readfs(int file) {
 void dump() {
     terminal_row = 0;
 	terminal_column = 0;
-	terminal_color = vga_entry_color(WHITE, LIGHT_BLUE);
+	terminal_color = vga_entry_color(WHITE, BLUE);
 	terminal_buffer = (uint16_t*) 0xB8000;
 	for (size_t y = 0; y < VGA_HEIGHT; y++) {
 		for (size_t x = 0; x < VGA_WIDTH; x++) {
