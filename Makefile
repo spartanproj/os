@@ -12,7 +12,7 @@ run:
 cmdrun: 
 	qemu-system-i386 -rtc base=localtime -curses -kernel kernel.bin
 clean:
-	rm -rf boot/boot.o kc.o kasm.o kernel.bin
+	rm -rf boot/boot.o kc.o kasm.o kernel.bin kernel.img
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
 game:
 	gcc games/main.c -o main.gcc.out -g 

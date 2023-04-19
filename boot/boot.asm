@@ -17,7 +17,6 @@ global load_idt
 
 extern kmain 		;this is defined in the c file
 extern keyboard_handler_main
-
 read_port:
 	mov edx, [esp + 4]
 			;al is the lower 8 bits of eax
