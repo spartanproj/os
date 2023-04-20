@@ -152,7 +152,3 @@ I still haven't found a way to compile on Windows, but I am working on it.
 ### How does random work?
 ##### In a nutshell:
 At compile time, a bash script is run that grabs the Unix epoch time using `date +%s`. This is then written into a little header file along with some other RNG stuff. **DO NOT CHANGE THE NUMBERS** unless you know what you are doing!
-
-### discord
-we have a discord!
-the link is: https://discord.gg/R5bgPEkFMe
