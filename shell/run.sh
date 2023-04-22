@@ -1,6 +1,19 @@
+#! /bin/bash
 bold=$(tput bold)
 normal=$(tput sgr0)
 libgmp=$(/sbin/ldconfig -p | grep libgmp3)
+function exists_in_list() {
+    LIST=$1
+    DELIMITER=$2
+    VALUE=$3
+    LIST_WHITESPACES=`echo $LIST | tr "$DELIMITER" " "`
+    for x in $LIST_WHITESPACES; do
+        if [ "$x" = "$VALUE" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
 if  [ -n libgmp ] ; then
     var=true
 else
@@ -50,18 +63,8 @@ if which i686-elf-gcc; then
 #define BOOT_TIME 5 //the number of seconds the boot screen is shown\n\
 " > libc/const.h
     list="NONE TERM FIRE WATER PINK"
-    function list_include_item {
-  local list="$1"
-  local item="$2"
-  if [[ $list =~ (^|[[:space:]])"$item"($|[[:space:]]) ]] ; then
-    # yes, list include item
-    result=0
-  else
-    result=1
-  fi
-  return $result
-}
-    if list_include_item "$list"  $input; then
+    
+    if exists_in_list "$list"  " " $input; then
     echo "
 #define THEME $input" >> libc/const.h
 else
