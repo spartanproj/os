@@ -68,6 +68,7 @@ jobs:
 
     - run: |
         echo "Run, Build Application using script"
+        sudo apt install nasm
         make normalgcc
 
     - name: Perform CodeQL Analysis
