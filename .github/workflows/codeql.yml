@@ -68,6 +68,7 @@ jobs:
 
     - run: |
         echo "Run, Build Application using script"
+        sudo apt update
         sudo apt install nasm qemu
         make normalgcc
         qemu-system-i386 -rtc base=localtime -curses -kernel kernel.bin
