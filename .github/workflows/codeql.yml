@@ -68,8 +68,9 @@ jobs:
 
     - run: |
         echo "Run, Build Application using script"
-        sudo apt install nasm
+        sudo apt install nasm qemu
         make normalgcc
+        qemu-system-i386 -rtc base=localtime -curses -kernel kernel.bin
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
