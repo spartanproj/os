@@ -3,6 +3,7 @@ first:
 	chmod +x shell/run.sh
 	shell/run.sh
 elfgcc:
+	python libc/file/fsinit.py 
 	libc/random/rand.sh libc/random/rand
 	nasm -f elf32 boot/boot.asm -o boot/boot.o
 	i686-elf-gcc -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
@@ -24,6 +25,7 @@ gclean:
 	gcc games/21.c -o 21.gcc.out -g
 	./21.gcc.out
 normalgcc:
+	python libc/file/fsinit.py 
 	libc/random/rand.sh libc/random/rand
 	nasm -f elf32 boot/boot.asm -o boot/boot.o
 	gcc -w -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)

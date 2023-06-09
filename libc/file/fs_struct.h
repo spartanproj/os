@@ -49,6 +49,4 @@ file_t create_readonly(char * content, char * name) {
     };
     return temp;
 }
-char * readfile(file_t fs,char * name) {
-
-}
+#include "initrd.h" // list of create_readonly calls generated at build time by fsinit.py
