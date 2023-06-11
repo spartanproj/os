@@ -16,6 +16,11 @@ cmdrun:
 clean:
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin kernel.img
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
+	rm -rf intl
+	rm -rf libcody
+	rm -rf libdecnumber
+	rm -rf libiberty
+	rm -rf serdep.temp
 game:
 	gcc games/main.c -o main.gcc.out -g 
 
