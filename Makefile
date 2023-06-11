@@ -22,6 +22,11 @@ clean:
 	rm -rf libiberty
 	rm -rf serdep.temp
 	rm -rf zlib
+	rm -rf a.out
+	rm -rf config.log
+	rm -rf config.status
+	rm -rf libbacktrace
+	rm -rf lto-plugin
 game:
 	gcc games/main.c -o main.gcc.out -g 
 
