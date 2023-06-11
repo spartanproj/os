@@ -6,7 +6,7 @@
 
 `curl https://raw.githubusercontent.com/spartanproj/os/master/install.sh -o install.sh;chmod +x install.sh;./install.sh` - This requires sudo access (only tested on macOS and Debian)!
 
-- If you want to install on a non-macOS or Debian based system, install these packages: `build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo nasm qemu`. You may need more
+- If you want to install on a non-macOS or Debian based system, install these packages: `build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo nasm qemu`. You may need more depending on how minimal your OS is
 
 ### Authored by [werdl](https://github.com/werdl)
 
