@@ -1,16 +1,22 @@
-#include <kernel/idt.h>
-#include <stdio.h>
-#include <util.h>
-#include <stdbool.h>
-#include "keys.h"
-#include <random/rand.h>
-#include "games/tic.c"
-#include "util/ascii.h"
-#include "games/21.c"
-#include <fs/fs.h>
-#include <time/time.h>
-#include <file/file.h>
-#include <const.h>
+#include <kernel/idt.h> // IDT
+#include <stdio.h> // printf and tty
+#include <util.h> // various wrappers, atoi, itoa
+#include <stdbool.h> // compiler gen, bool
+#include "keys.h" // keymap
+#include <random/rand.h> // compile-time random
+#include "games/tic.c" // tic tac toe
+#include "util/ascii.h" // ascii art
+#include "games/21.c" // WIP 21 game
+#include <fs/fs.h> // journals
+#include <time/time.h> // wrappers for time
+// #include <file/file.h> failed file implementation
+#include <const.h> // NerdOS constants
+#include <mem/alloc.h> // kmalloc
+#include <mem/memcmp.h> // memcmp
+#include <file/fs_struct.h> // filesystem structs and funcs
+#include <file/initrd.h> // compiler generated file
+#define DEFTYPE 10
+#define DEFCOL 2 // sort out properly later, probably a function call from assembly
 int gui();
 int text_edit();
 int move(const char * inp);
@@ -26,8 +32,13 @@ char typed2[1024];
 char * position[3][3]={{"0,0","1,0","2,0"},
 					   {"0,1","1,1","2,1"},
 					   {"0,2","1,2","2,2"}}; // which gui box you are on
+bool checkclr(char * color) {
+	return memcmp(search("color.conf"),color,strlen(color));
+}
+#define c(x) checkclr(x)
 void keyboard_handler_main(void)
 {
+	createfiles(); //function call from initrd.h
 	unsigned char status;
 	char keycode;
 	write_port(0x20, 0x20);
@@ -119,13 +130,17 @@ int move(const char * inp) {
 	else fail=true;
 	return -fail; // 0 for great, -1 for error
 }
+
 extern char read_port(unsigned short port);
 extern void write_port(unsigned short port, unsigned char data);
 bool sudo;
 
 bool quitgui=false;
+
 int kmain(void)
 {
+	createfiles();
+
 	if (USER=="root") {sudo=true;}
 	else {sudo=false;}
 	for (int y=0;y<1024;y++) {
@@ -180,7 +195,8 @@ int kmain(void)
 	// itoa(rand(),buff,10);
 	// printf(buff);
 	srand(rnd);
-	printf("Debugging ON, OFF or SOME?\n");
+	printf(search("test1.txt"));
+	printf("\nDebugging ON, OFF or SOME?\n");
 	bool q=true;
 	bool playing=false;
 	int toss;
@@ -228,7 +244,7 @@ int kmain(void)
 			// printf("hello from echo!");
 			mse_nl();
 			printf("\n");
-			counter=0;
+			counter=0; // reset stor FEATURE (its like not a bug (defo deliberate))
 			toclear=true;
 		} else if (typed[0]=="l" && typed[1]=="o"&&typed[2]=="g"&&typed[3]=="i" && typed[4]=="n" &&typed[5]==" " && typed[6]=="p" && typed[7]=="a"&&typed[8]=="s"&&typed[9]=="s"&&typed[10]=="ENTER") {
 			printf("Logged in as sudo\n");
@@ -433,7 +449,10 @@ int kmain(void)
 				printn(t);
 			}
 			toclear=true;
-		} 
+		}  else if (typed[0]=="l" && typed[1]=="s" && typed[2]=="ENTER") {
+			printlist();
+			toclear=true;
+		}
 		if (toclear==true) {
 			toclear=false;
 			for (int y=0;y<1024;y++) {
