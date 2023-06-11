@@ -1,4 +1,5 @@
 
+
     #define NONE 0
 #define TERM 1 
 #define FIRE 2

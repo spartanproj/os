@@ -133,3 +133,11 @@ int atoi(char * str) {
     }
     return res;
 }
+// char * strcat(char * dest, char * source) {
+//   char * ptr=dest+strlen(dest);
+//   while (*source!="\0") {
+//     *ptr++=*source++;
+//   }
+//   *ptr="\0";
+//   return dest;
+// }
