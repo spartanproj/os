@@ -21,6 +21,7 @@ clean:
 	rm -rf libdecnumber
 	rm -rf libiberty
 	rm -rf serdep.temp
+	rm -rf zlib
 game:
 	gcc games/main.c -o main.gcc.out -g 
 

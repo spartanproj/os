@@ -17,4 +17,4 @@ libcody
 libdecnumber
 libiberty
 lto-plugin
-zlib/.deps/*
+zlib
