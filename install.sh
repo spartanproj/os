@@ -127,11 +127,17 @@ then
     which port >> /dev/null && MACPORTS=1
     if (( MACPORTS==0 ))
     then
+        mkdir temp;
+        cd temp || return;
         # Install MacPorts
         curl -fsSL https://github.com/macports/macports-base/releases/download/v2.8.1/MacPorts-2.8.1.tar.gz;
         tar xzvf MacPorts-2.8.1.tar.gz
         cd MacPorts-2.8.1 || return
         ./configure && make && sudo make install
+        cd ..;
+        rm -rf temp;
+        sudo port -v selfupdate
+        
     fi
     if (( BREW == 0 ))
     then
@@ -238,8 +244,8 @@ cd os || return
 echo "${tty_bold}${tty_blue}==>${tty_reset} ${tty_bold}Running make & make run"
 make && make run
 echo
-echo "${tty_bold}To run again type this: \
-make${tty_reset}"
+echo "${tty_bold}To run NerdOS, use make run.${tty_reset}"
+echo "${tty_bold}To rebuild gcc and binutils run make.${tty_reset}"
 echo
 echo "To add the $TARGET binaries into your path, place this into your .zshrc or .bashrc:"
 echo "${tty_bold}export PATH="$HOME/opt/cross/bin:$PATH"${tty_reset}"
