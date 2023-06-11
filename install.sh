@@ -67,7 +67,6 @@ case $(uname) in
         which zypper && { OS=3; }
         which apt-get && { OS=4; }
         which apk && { OS=5; }
-        which pacman && { OS=5; }
         ;;
     Darwin )
         OS=0
@@ -188,7 +187,7 @@ then
     brew install qemu nasm bison flex gmp libmpc mpfr texinfo binutils
 elif (( OS == 6 ))
 then
-    sudo dnf install qemu nasm bison flex libmpc mpfr texinfo gmp
+    sudo dnf install qemu nasm bison flex mpc mpfr texinfo gmp gcc-c++
 elif (( OS == 2 ))
 then
     sudo yum install qemu nasm bison flex libmpc mpfr texinfo gmp
@@ -197,7 +196,9 @@ then
     sudo zypper install qemu nasm bison flex libmpc mpfr texinfo gmp
 elif (( OS == 5 ))
 then
-    apk add build-base qemu nasm bison flex libmpc mpfr texinfo gmp
+    apk update
+    apk upgrade
+    apk add build-base qemu nasm bison flex make mpc mpfr texinfo gmp
 else
     brew install qemu nasm bison flex gmp libmpc mpfr texinfo binutils || return
 fi
