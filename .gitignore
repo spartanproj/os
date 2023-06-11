@@ -2,3 +2,4 @@ logo.png
 .vscode/*
 test/*
 test.c
+.DS_Store
