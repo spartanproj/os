@@ -20,7 +20,7 @@ clean:
 	rm -rf libcody
 	rm -rf libdecnumber
 	rm -rf libiberty
-	rm -rf serdep.temp
+	rm -rf serdep.tmp
 	rm -rf zlib
 	rm -rf a.out
 	rm -rf config.log

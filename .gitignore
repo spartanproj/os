@@ -8,7 +8,7 @@ boot.o
 build-x86_64-apple-darwin23.0.0
 config.log
 config.status
-serdep.temp
+serdep.tmp
 kc.o
 intl
 intl/*
