@@ -1,16 +1,25 @@
 # NerdOS
+
 ### Good luck with install (you'll need it)
+
 #### To install: 
-`curl https://raw.githubusercontent.com/spartanproj/os/master/install.sh -o install.sh;chmod +x install.sh;./install.sh` - This requires sudo access (also Debian based only)!
+
+`curl https://raw.githubusercontent.com/spartanproj/os/master/install.sh -o install.sh;chmod +x install.sh;./install.sh` - This requires sudo access (only tested on macOS and Debian)!
+
 - If you want to install on a non-Debian based system, install these packages: `build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo nasm qemu`
 
 ### Authored by [werdl](https://github.com/werdl)
+
 ![Lines of code](https://sloc.xyz/github/spartanproj/os) ![License](https://badgen.net/github/license/spartanproj/os?color=red) ![Last commit](https://badgen.net/github/last-commit/spartanproj/os?color=orange)
 ![logo](https://user-images.githubusercontent.com/116349156/230002827-37baf026-b826-40c4-85a0-2b2b54621a1b.png)
+
 ### x86 OS that can do some things
-- maybe ARM but not rn 
+
+- maybe ARM but not rn
 - will just have to rewrite some asm
+
 ### FAQ
+
 **Q**: Why AGPL?<br>
 **A**: Source code should be available<br>
 **Q**: Why x86?<br>
@@ -22,7 +31,9 @@ try running with qemu-system-i386<br>
 **Q**: the makefile isn't working!! help!!!<br>
 **A**: do you have everything installed?
    If you do, try modifying the makefile a bit.<br>
+
 ### Things it can do
+
 - print
 - input
 - kernel panic 😎
@@ -111,46 +122,68 @@ style L fill:#8B8000;
 style B fill:#8B8000;
 style Filesystems fill:#626619
 style Basics fill:#0a6127
+
 ```
 ![BSOD](img/bsod.png)
+
 ### Plans
+
 - libc
 - text based GUI
 - "port" a rewritten [`Rosemary`](http://github.com/werdl/rosemary)
+
 ### Compiling
+
 #### You will need:
-- A Unix-like environment (Windows no, BSD variants probably, MacOS maybe but hard, Cygwin yes, Linux yes, other old Unix variants (eg Irix) probably?? maybe source install for packages)
+
+- A Unix-like environment (Windows no, BSD variants probably, MacOS YES!, Cygwin yes, Linux yes, other old Unix variants (eg Irix) probably?? maybe source install for packages)
 - a gcc cross compiler (and binutils) for i386 or i686 ([here](https://wiki.osdev.org/GCC_Cross-Compiler)'s how to get that)
 - qemu-system-i386 (`brew install -y qemu-system-i386` or the package manager on your distro (check the internet if it's not working.))
 - patience
+
 #### I can't compile the cross compiler...
+
 - You'll probably be OK without for just running it, but to develop you'll need it
 - You can techically run it with ordinary gcc, but not advised (it is a bit odd and you get a load of warnings)
+- 
 #### Steps:
+
 - `git clone` this repo
 - install to your dir of choice.
 - run `make` to compile and run it. Then ctrl-c in your terminal to clean everything up.
 - The script will work out what you have and haven't installed.
+- 
 #### It isn't working...
+
 - If you are ssh, telnet, multipass etc then add the -curses flag to qemu in the Makefile.
 - Establish if you are on an x86 computer (32-bit or 64-bit). If not, virtualise! It does not work on other architectures.
 - You are on x86...
 - If so, get out your nerd hat, read through the messages, and attempt to self-compile. If you cannot, then 
+
 #### I don't have make!
+
 - If you don't have make, get it. You will need a Unix env anyway so it will pay off
 - If you are on Windows, I recommend you try WSL (Debian/similar) or Cygwin.
+
 #### I love Windows/can't use anything else
+
 - Step 1 - install msys2
 - Step 2 - install qemu with the installer on their downloads page
 - Step 3 - obtain a kernel.bin from releases or your friends
 - Step 4 - run `path/to/qemu-system-i386 -rtc base=localtime -kernel path/to/kernel.bin` in msys2 
+
 I still haven't found a way to compile on Windows, but I am working on it.
+
 ### Known limitations
+
 - can't get *nix timestamp, computationally too much
 - sleep function crashes if launched in the last 5ish seconds of a minute
 - numbers under 10 are suffixed with a triangle ?
+
 ### How does random work?
+
 ##### In a nutshell:
+
 At compile time, a bash script is run that grabs the Unix epoch time using `date +%s`. This is then written into a little header file along with some other RNG stuff. **DO NOT CHANGE THE NUMBERS** unless you know what you are doing!
 <pre>
   _  _                       _     ___     ___                                                                                                      

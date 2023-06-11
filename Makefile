@@ -16,6 +16,17 @@ cmdrun:
 clean:
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin kernel.img
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
+	rm -rf intl
+	rm -rf libcody
+	rm -rf libdecnumber
+	rm -rf libiberty
+	rm -rf serdep.tmp
+	rm -rf zlib
+	rm -rf a.out
+	rm -rf config.log
+	rm -rf config.status
+	rm -rf libbacktrace
+	rm -rf lto-plugin
 game:
 	gcc games/main.c -o main.gcc.out -g 
 
@@ -31,4 +42,10 @@ normalgcc:
 	nasm -f elf32 boot/boot.asm -o boot/boot.o
 	gcc -w -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
 	ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
+macos:
+	python3 libc/file/fsinit.py 
+	libc/random/rand.sh libc/random/rand
+	nasm -f elf32 boot/boot.asm -o boot/boot.o
+	$$TARGET-gcc -w -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
+	$$TARGET-ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
 nothing:
