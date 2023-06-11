@@ -18,3 +18,9 @@ void kprintd(const char * msg, bool second) {
     }
     setclr(15,0);
 }
+#define OVERWRITE false //change to true: files can be overwritten\n
+#define WARN true //change to false: warnings not given by default\n
+#define FULLDEBUG false //change to true: enable full debugging by default\n
+#define USER "root" //change default username: if changed to root, sudo will be autoenabled\n
+#define BOOT_TIME 5 //the number of seconds the boot screen is shown\n
+
