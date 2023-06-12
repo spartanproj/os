@@ -1,16 +1,21 @@
-#include <kernel/idt.h>
-#include <stdio.h>
-#include <util.h>
-#include <stdbool.h>
-#include "keys.h"
-#include <random/rand.h>
-#include "games/tic.c"
-#include "util/ascii.h"
-#include "games/21.c"
-#include <fs/fs.h>
-#include <time/time.h>
-#include <file/file.h>
-#include <const.h>
+#include <kernel/idt.h> // IDT
+#include <stdio.h> // printf and tty
+#include <util.h> // various wrappers, atoi, itoa
+#include <stdbool.h> // compiler gen, bool
+#include "keys.h" // keymap
+#include <random/rand.h> // compile-time random
+#include "games/tic.c" // tic tac toe
+#include "util/ascii.h" // ascii art
+#include "games/21.c" // WIP 21 game
+#include <fs/fs.h> // journals
+#include <time/time.h> // wrappers for time
+// #include <file/file.h> failed file implementation
+#include <const.h> // NerdOS constants
+#include <mem/alloc.h> // kmalloc
+#include <mem/memcmp.h> // memcmp
+#include <file/fs_struct.h> // filesystem structs and funcs
+#include <file/initrd.h> // compiler generated file
+#include "util/splash.h" // generate random splash
 int gui();
 int text_edit();
 int move(const char * inp);
@@ -27,9 +32,36 @@ char * position[3][3]={{"0,0","1,0","2,0"},
 					   {"0,1","1,1","2,1"},
 					   {"0,2","1,2","2,2"}}; // which gui box you are on
 bool checkclr(char * color) {
-	return memcmp(search("color.conf"),color,strlen(color));
+	return !memcmp(search("color.conf"),color,strlen(color));
 }
-#define c(x) checkclr(x)
+#define check(x) checkclr(x)
+int getcolors(bool type) {
+	static int defcol;
+	static int deftype;
+	if (check("TERM")) {
+		defcol=2;
+		deftype=10;
+	} else if (check("PINK")) {
+		defcol=5;
+		deftype=13;
+	} else if (check("BORE")) {
+		defcol=8;
+		deftype=7;
+	} else if (check("FIRE")) {
+		defcol=4;
+		deftype=12;
+	}
+	
+	if (type) { // default type
+		return deftype;
+	} else return defcol;
+}
+int defcol() {
+	return getcolors(0);
+}
+int deftype() {
+	return getcolors(1);
+}
 void keyboard_handler_main(void)
 {
 	createfiles(); //function call from initrd.h
@@ -90,9 +122,9 @@ void keyboard_handler_main(void)
 			itoa(keycode,buffer,10);
 			printf(buffer);
 		}
-		setclr(DEFTYPE,0);
+		setclr(deftype(),0);
 		printf(keys(keycode));
-		setclr(DEFCOL,0);
+		setclr(defcol(),0);
 	}
 }
 int dellast() {
@@ -134,7 +166,7 @@ bool quitgui=false;
 int kmain(void)
 {
 	createfiles();
-
+	srand(rnd);
 	if (USER=="root") {sudo=true;}
 	else {sudo=false;}
 	for (int y=0;y<1024;y++) {
@@ -154,12 +186,14 @@ int kmain(void)
 	}
 	setclr(11,0);
 	printdate();
-	setclr(DEFCOL,0);
-	printf("Please ignore slow boot time, it hangs on a while loop! It may be due to the \nspeed of your computer\n");
+	char * splasht=splash();
+	setclr(random_number_splash==10||random_number_splash==3?14:3,0);
+	printf(splasht);
+	setclr(defcol(),0);
 	printf("\n");
 	printf(info.contents);
 
-	sleep(BOOT_TIME);
+	sleep(strlen(splasht)/10);
 	
 	clear();
 	kprintd("Boot into kernel: ",1);
@@ -177,7 +211,7 @@ int kmain(void)
 	setclr(10,0);
 	printf("Type your commands below.\n");
 	mse_nl();
-	setclr(DEFCOL,0);
+	setclr(defcol(),0);
 	printrn=false;
 	debug=false;
 	bool toclear=false;
@@ -188,8 +222,7 @@ int kmain(void)
 	// srand(rnd);
 	// itoa(rand(),buff,10);
 	// printf(buff);
-	srand(rnd);
-	printf(search("test1.txt"));
+
 	printf("\nDebugging ON, OFF or SOME?\n");
 	bool q=true;
 	bool playing=false;
@@ -271,7 +304,7 @@ int kmain(void)
 			setclr(10,0);
 			printf("Type your commands below.\n");
 			mse_nl();
-			setclr(DEFCOL,0);
+			setclr(defcol(),0);
 		}
 		else if (typed[0]=="L-CTRL"&&typed[1]=="L-ALT"&& typed[2]=="t") {
 			panic("end","hlt",1);
@@ -293,7 +326,7 @@ int kmain(void)
 			printf("toss was....\n");
 			printn(toss);
 			printf("\n");
-			setclr(DEFCOL,0);
+			setclr(defcol(),0);
 			if(toss==0) {
 				printf("You win! Good job!\n");
 				playing=false;
@@ -307,7 +340,7 @@ int kmain(void)
 			printf("toss was....\n");
 			printn(toss);
 			printf("\n");
-			setclr(DEFCOL,0);
+			setclr(defcol(),0);
 			if(toss==1) {
 				printf("You win! Good job!\n");
 				playing=false;
@@ -459,18 +492,18 @@ int kmain(void)
 int gui() {
 	clear_screen();
 	clear();
-	setclr(DEFCOL,15);
+	setclr(defcol(),15);
 	for (int r=0;r<12;r++) {
-		setclr(DEFCOL,15);
+		setclr(defcol(),15);
 		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 	}
 		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-		setclr(DEFCOL,0);
+		setclr(defcol(),0);
 		printf("hi");
-		setclr(DEFCOL,15);
+		setclr(defcol(),15);
 		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 	for (int r=0;r<13;r++) {
-		setclr(DEFCOL,15);
+		setclr(defcol(),15);
 		printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 	}
 	if (quitgui==true) {
@@ -485,5 +518,5 @@ int text_edit() {
 	setclr(10,0);
 	printf(" ~\n");
 	mse_nl();
-	setclr(DEFCOL,0);
+	setclr(defcol(),0);
 }
