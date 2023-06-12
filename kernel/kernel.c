@@ -1,22 +1,16 @@
-#include <kernel/idt.h> // IDT
-#include <stdio.h> // printf and tty
-#include <util.h> // various wrappers, atoi, itoa
-#include <stdbool.h> // compiler gen, bool
-#include "keys.h" // keymap
-#include <random/rand.h> // compile-time random
-#include "games/tic.c" // tic tac toe
-#include "util/ascii.h" // ascii art
-#include "games/21.c" // WIP 21 game
-#include <fs/fs.h> // journals
-#include <time/time.h> // wrappers for time
-// #include <file/file.h> failed file implementation
-#include <const.h> // NerdOS constants
-#include <mem/alloc.h> // kmalloc
-#include <mem/memcmp.h> // memcmp
-#include <file/fs_struct.h> // filesystem structs and funcs
-#include <file/initrd.h> // compiler generated file
-#define DEFTYPE 10
-#define DEFCOL 2 // sort out properly later, probably a function call from assembly
+#include <kernel/idt.h>
+#include <stdio.h>
+#include <util.h>
+#include <stdbool.h>
+#include "keys.h"
+#include <random/rand.h>
+#include "games/tic.c"
+#include "util/ascii.h"
+#include "games/21.c"
+#include <fs/fs.h>
+#include <time/time.h>
+#include <file/file.h>
+#include <const.h>
 int gui();
 int text_edit();
 int move(const char * inp);
