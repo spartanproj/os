@@ -21,3 +21,4 @@ zlib
 a.out
 libbacktrace
 lto-plugin
+kc.S

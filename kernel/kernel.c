@@ -17,6 +17,7 @@
 #include <file/initrd.h> // compiler generated file
 #include "util/splash.h" // generate random splash
 #include <sys/cpuid.h> // cpuid utils
+#include <nerd.h> // consts
 int gui();
 int text_edit();
 int move(const char * inp);
@@ -203,12 +204,11 @@ int kmain(void)
 	printf(splasht);
 	setclr(defcol(),0);
 	printf("\n");
+	printf("__nerd__==");
+	printf(__nerd__?"true\n":"false\n");
 	printf(info.contents);
-	int a, b, c, d;
-
-	cpuid(&a, &b, &c, &d);
 	sleep(strlen(splasht)/10);
-	
+
 	clear();
 	kprintd("Boot into kernel: ",1);
 	printf("\n");
