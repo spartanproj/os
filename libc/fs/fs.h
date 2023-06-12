@@ -164,9 +164,9 @@ void dump() {
     printf("\nContents of destination: ");
     register int edi asm("edi");
     printh(edi);
-    setclr(4,9);
+    setclr(4,BLUE);
     printf("\nTry restarting your computer\n");
-    setclr(15,9);
+    setclr(15,BLUE);
     printf("_   _              _ _____ _____  ______ _____ ___________ _ ");
     printf("\n| \\ | |            | |  _  /  ___| | ___ /  ___|  _  |  _  | |");
     printf("\n|  \\| | ___ _ __ __| | | | \\ `--.  | |_/ \\ `--.| | | | | | | |");

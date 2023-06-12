@@ -16,17 +16,7 @@ cmdrun:
 clean:
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin kernel.img
 	rm -rf boot/boot.o kc.o kasm.o kernel.bin
-	rm -rf intl
-	rm -rf libcody
-	rm -rf libdecnumber
-	rm -rf libiberty
-	rm -rf serdep.tmp
-	rm -rf zlib
-	rm -rf a.out
-	rm -rf config.log
-	rm -rf config.status
-	rm -rf libbacktrace
-	rm -rf lto-plugin
+	rm -rf intl libcody libdecnumber libiberty serdep.tmp zlib a.out config.log config.status libbacktrace lto-plugin
 game:
 	gcc games/main.c -o main.gcc.out -g 
 

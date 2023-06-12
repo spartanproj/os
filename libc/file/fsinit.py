@@ -50,7 +50,6 @@ void insert(file_t data) {
             with open(location+"/"+file,"r") as file_contents:
                 # print(str(file_contents.readlines()).replace("[","").replace("'","").replace(","," \ \n").replace("]",""))
                 tempf=(str(file_contents.readlines()).replace("[","").replace("'","").replace(",","\\\n").replace("]",""))
-                print(tempf)
                 initrd.write(f"file_t fil_{filef};")
                 after+=f"\ncreate_readonly(\"{tempf}\",\"{file}\",&fil_{filef});\ninsert(fil_{filef});\n"
         initrd.write("void createfiles() {")

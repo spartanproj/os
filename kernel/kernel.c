@@ -16,6 +16,7 @@
 #include <file/fs_struct.h> // filesystem structs and funcs
 #include <file/initrd.h> // compiler generated file
 #include "util/splash.h" // generate random splash
+#include <sys/cpuid.h> // cpuid utils
 int gui();
 int text_edit();
 int move(const char * inp);
@@ -47,9 +48,20 @@ int getcolors(bool type) {
 	} else if (check("BORE")) {
 		defcol=8;
 		deftype=7;
-	} else if (check("FIRE")) {
+	} else if (check("ANGER")) {
 		defcol=4;
 		deftype=12;
+	} else if (check("BLUE")) {
+		defcol=3;
+		deftype=11;
+	} else if (check("FIRE")) {
+		defcol=4;
+		deftype=14;
+	} else if (check("RETRO")) {
+		defcol=2;
+		deftype=14;
+	} else if (check("LIGHT")) {
+		panic("Light mode activated, defensive kernel panic initiated","Wrong mode",1);
 	}
 	
 	if (type) { // default type
@@ -192,7 +204,9 @@ int kmain(void)
 	setclr(defcol(),0);
 	printf("\n");
 	printf(info.contents);
+	int a, b, c, d;
 
+	cpuid(&a, &b, &c, &d);
 	sleep(strlen(splasht)/10);
 	
 	clear();

@@ -43,7 +43,7 @@ insert(fil_test1txt);
 create_readonly("bjasbj","test2.txt",&fil_test2txt);
 insert(fil_test2txt);
 
-create_readonly("BORE","color.conf",&fil_colorconf);
+create_readonly("TERM","color.conf",&fil_colorconf);
 insert(fil_colorconf);
 
 create_readonly("5","boot_time.conf",&fil_boot_timeconf);
