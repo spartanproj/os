@@ -158,16 +158,14 @@ void dump() {
     register int ebp asm("ebp");
     printh(ebp);
 
-    printf("\nContents of source: ");
-    register int esi asm("esi");
-    printh(esi);
     printf("\nContents of destination: ");
     register int edi asm("edi");
     printh(edi);
     setclr(4,BLUE);
-    printf("\nTry restarting your computer\n");
+    printf("\nTry restarting your computer (");
+    printf(currentdebugmsg);
     setclr(15,BLUE);
-    printf("_   _              _ _____ _____  ______ _____ ___________ _ ");
+    printf(")\n_   _              _ _____ _____  ______ _____ ___________ _ ");
     printf("\n| \\ | |            | |  _  /  ___| | ___ /  ___|  _  |  _  | |");
     printf("\n|  \\| | ___ _ __ __| | | | \\ `--.  | |_/ \\ `--.| | | | | | | |");
     printf("\n| . ` |/ _ | '__/ _` | | | |`--. \\ | ___ \\`--. | | | | | | | |");

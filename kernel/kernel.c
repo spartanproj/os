@@ -18,6 +18,7 @@
 #include "util/splash.h" // generate random splash
 #include <sys/cpuid.h> // cpuid utils
 #include <nerd.h> // consts
+#include <io/clr.h>
 int gui();
 int text_edit();
 int move(const char * inp);
@@ -33,48 +34,7 @@ char typed2[1024];
 char * position[3][3]={{"0,0","1,0","2,0"},
 					   {"0,1","1,1","2,1"},
 					   {"0,2","1,2","2,2"}}; // which gui box you are on
-bool checkclr(char * color) {
-	return !memcmp(search("color.conf"),color,strlen(color));
-}
-#define check(x) checkclr(x)
-int getcolors(bool type) {
-	static int defcol;
-	static int deftype;
-	if (check("TERM")) {
-		defcol=2;
-		deftype=10;
-	} else if (check("PINK")) {
-		defcol=5;
-		deftype=13;
-	} else if (check("BORE")) {
-		defcol=8;
-		deftype=7;
-	} else if (check("ANGER")) {
-		defcol=4;
-		deftype=12;
-	} else if (check("BLUE")) {
-		defcol=3;
-		deftype=11;
-	} else if (check("FIRE")) {
-		defcol=4;
-		deftype=14;
-	} else if (check("RETRO")) {
-		defcol=2;
-		deftype=14;
-	} else if (check("LIGHT")) {
-		panic("Light mode activated, defensive kernel panic initiated","Wrong mode",1);
-	}
-	
-	if (type) { // default type
-		return deftype;
-	} else return defcol;
-}
-int defcol() {
-	return getcolors(0);
-}
-int deftype() {
-	return getcolors(1);
-}
+
 void keyboard_handler_main(void)
 {
 	createfiles(); //function call from initrd.h
@@ -180,8 +140,11 @@ int kmain(void)
 {
 	createfiles();
 	srand(rnd);
-	if (USER=="root") {sudo=true;}
+	if (search("user.conf")=="root") {sudo=true;}
 	else {sudo=false;}
+	if (search("user.conf")=="") {
+		panic("user.conf instantiated to empty string","No user set",1);
+	}
 	for (int y=0;y<1024;y++) {
 		typed[y]="";
 	}
@@ -229,15 +192,15 @@ int kmain(void)
 	printrn=false;
 	debug=false;
 	bool toclear=false;
-	printf("Logged in as ");
-	printf(USER);
-	printf("\n");
+	printf("Logged in as \"");
+	printf(search("user.conf"));
+	printf("\"\n");
 	// char buff[15];
 	// srand(rnd);
 	// itoa(rand(),buff,10);
 	// printf(buff);
 
-	printf("\nDebugging ON, OFF or SOME?\n");
+	printf("Debugging ON, OFF or SOME?\n");
 	bool q=true;
 	bool playing=false;
 	int toss;

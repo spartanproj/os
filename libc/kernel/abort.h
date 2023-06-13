@@ -2,7 +2,11 @@
 // #include <stdlib.h>
 #include "kernel.h"
 void dump();
+char * currentdebugmsg;
+char * currentpanicmsg;
 void panic(const char * debug, const char * msg, bool fatal) {
+	currentdebugmsg=debug;
+	currentpanicmsg=msg;
 	setclr(11,0);
 	mse_nl();
 	printf("\nkernel: ");
