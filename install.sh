@@ -101,7 +101,7 @@ fi
 echo "This installer will install the ${tty_bold}dependencies${tty_reset} for NerdOS and build a QEMU binary which it will proceed to run.";
 echo
 echo "${tty_bold}${tty_blue}==>${tty_reset} ${tty_bold} This script will install:"
-echo "- The dependencies to build NerdOS: qemu nasm bison flex libmpc mpfr texinfo gmp"
+echo "- The dependencies to build NerdOS: qemu nasm bison flex libmpc mpfr texinfo gmp grub-pc xorriso"
 echo "- Will create 2 directories: build-bintools and build-gcc."
 echo "- Will clone the NerdOS git repository into os"
 if [ $OS == 0 ] || [ $OS == 1 ]
@@ -176,31 +176,31 @@ echo "${tty_bold}${tty_blue}==>${tty_reset} ${tty_bold}Installing packages... (p
 if (( OS == 4 ))
 then
     sudo apt update
-    sudo apt install qemu nasm qemu-system-x86 build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo 
+    sudo apt install grub-pc xorriso qemu nasm qemu-system-x86 build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo 
 
 elif (( OS == 0 ))
 then
-    brew install python3 gcc qemu nasm bison flex gmp libmpc mpfr texinfo binutils
+    brew install grub-pc xorriso python3 gcc qemu nasm bison flex gmp libmpc mpfr texinfo binutils
     sudo port install gmp mpfr libmpc
 elif (( OS == 1 ))
 then
-    brew install qemu nasm bison flex gmp libmpc mpfr texinfo binutils
+    brew install grub-pc xorriso qemu nasm bison flex gmp libmpc mpfr texinfo binutils
 elif (( OS == 6 ))
 then
-    sudo dnf install qemu nasm bison flex mpc mpfr texinfo gmp gcc-c++
+    sudo dnf grub-pc xorriso install qemu nasm bison flex mpc mpfr texinfo gmp gcc-c++
 elif (( OS == 2 ))
 then
-    sudo yum install qemu nasm bison flex libmpc mpfr texinfo gmp
+    sudo yum grub-pc xorriso install qemu nasm bison flex libmpc mpfr texinfo gmp
 elif (( OS == 3 ))
 then
-    sudo zypper install qemu nasm bison flex libmpc mpfr texinfo gmp
+    sudo zypper grub-pc xorriso install qemu nasm bison flex libmpc mpfr texinfo gmp
 elif (( OS == 5 ))
 then
     apk update
     apk upgrade
-    apk add build-base qemu nasm bison flex make mpc mpfr texinfo gmp
+    apk add grub-pc xorriso build-base qemu nasm bison flex make mpc mpfr texinfo gmp
 else
-    brew install qemu nasm bison flex gmp libmpc mpfr texinfo binutils || return
+    brew install grub-pc xorriso qemu nasm bison flex gmp libmpc mpfr texinfo binutils || return
 fi
 
 
@@ -248,5 +248,5 @@ echo
 echo "${tty_bold}To run NerdOS, use make run.${tty_reset}"
 echo "${tty_bold}To rebuild gcc and binutils run make.${tty_reset}"
 echo
-echo "To add the $TARGET binaries into your path, place this into your .zshrc or .bashrc:"
+echo "To add the $TARGET binaries into your path, place this into your $(echo $SHELL).rc"
 echo "${tty_bold}export PATH="$HOME/opt/cross/bin:$PATH"${tty_reset}"
