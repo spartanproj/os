@@ -49,6 +49,10 @@ try running with qemu-system-i386<br>
 - Tic tac toe & coin flip
 - 21 Game
 - 'filesystem' WIP
+- backspaces
+- initrd
+- splash text
+- configuration
 
 ```mermaid
 graph TD
@@ -139,26 +143,42 @@ style Basics fill:#0a6127
 
 #### You will need:
 
-- A Unix-like environment (Windows no, BSD variants probably, MacOS YES!, Cygwin yes, Linux yes, other old Unix variants (eg Irix) probably?? maybe source install for packages)
+- A Unix-like environment (Windows no, BSD variants probably, MacOS yes, Cygwin yes, Linux yes, other old Unix variants (eg Irix) probably?? maybe source install for packages)
 - a gcc cross compiler (and binutils) for i386 or i686 ([here](https://wiki.osdev.org/GCC_Cross-Compiler)'s how to get that)
 - qemu-system-i386 (`brew install -y qemu-system-i386` or the package manager on your distro (check the internet if it's not working.))
 - patience
 
 #### I can't compile the cross compiler...
+- It is a fair chance that with the right flags that your system gcc is OK (not you MacOS users).
+- If you see something like this
+```bash
+  -march=                               i686
+  Known valid arguments for -march= option:
+```
+- when you run
+```bash
+gcc -m32 -Q --help=target | grep march
+```
+- Your compiler is probably fine anyway. For example, on my Github codespace I don't have a cross compiler, but my gcc works anyway!
 
-- You'll probably be OK without for just running it, but to develop you'll need it
-- You can techically run it with ordinary gcc, but not advised (it is a bit odd and you get a load of warnings)
-- 
+##### If your output looks different:
+- Are you rocking GenuineIntel? If not, then you are going to need the cross compiler
+- You are? Well, most modern chips should mainly work, but ARE NOT tested. Pentiums are a bit different under the hood, and probably won't work.
+- Even if you have AMD x86_64, it only may work. ARM will never work, you will need a cross-compiler
+
+#### I really cannot!
+- Fine, boot up an x86_64 VM and use that systems gcc.
+- I think this is harder than just sucking it up and installing a cross compiler, but who am I to judge?
+
 #### Steps:
 
 - `git clone` this repo
 - install to your dir of choice.
 - run `make` to compile and run it. Then ctrl-c in your terminal to clean everything up.
 - The script will work out what you have and haven't installed.
-- 
 #### It isn't working...
 
-- If you are ssh, telnet, multipass etc then add the -curses flag to qemu in the Makefile.
+- If you do not have access to a fully-fledged display, then run
 - Establish if you are on an x86 computer (32-bit or 64-bit). If not, virtualise! It does not work on other architectures.
 - You are on x86...
 - If so, get out your nerd hat, read through the messages, and attempt to self-compile. If you cannot, then 

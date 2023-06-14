@@ -38,4 +38,5 @@ macos:
 	nasm -f elf32 boot/boot.asm -o boot/boot.o
 	i686-elf-gcc -w -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
 	i686-elf-ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
+term:| normalgcc cmdrun clean
 nothing:

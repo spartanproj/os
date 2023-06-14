@@ -39,7 +39,7 @@ void write(const char * data, size_t size, bool magic)
 		n=i;
     }
 }
- void clear(void) {
+void clear(void) {
 	term_init();
 	printf(" ");
 }
