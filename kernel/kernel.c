@@ -174,7 +174,7 @@ int kmain(void)
      ettti>iii>>>iietJJJJeJJeFe    \n\
       beIIiIeIIIeeeeIJFeJJeee2     \n\
         2ttIitetIiiiIItIIIeJ       \n\
-            QteIIIiIIFte         \n\                   
+            QteIIIiIIFte         \n\
 ");
 
  
