@@ -8,7 +8,7 @@ char * splash() {
         "Wow, compilation successful! Didn't expect that!",
         "Ach, an environment with no Python, no clang, no Go. I love it already!",
         "StackOverflow was useless in this project.",
-        "Shouldn't have called it BlueberryOS.",
+        "Welcome to NerdOS. Enjoy your stay :)",
         "That beautiful feeling when your code compiles, yet that scary feeling when your code compiles first time",
         "Favourite gcc flag? Mine is -w.",
         "Life! Don't talk to me about life! - Marvin TPA",
