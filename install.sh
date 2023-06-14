@@ -98,12 +98,12 @@ then
     fi
 fi
 
-echo "This installer will install the ${tty_bold}dependencies${tty_reset} for NerdOS and build a QEMU binary which it will proceed to run.";
+echo "This installer will install the ${tty_bold}dependencies${tty_reset} for BlueberryOS and build a QEMU binary which it will proceed to run.";
 echo
 echo "${tty_bold}${tty_blue}==>${tty_reset} ${tty_bold} This script will install:"
-echo "- The dependencies to build NerdOS: qemu nasm bison flex libmpc mpfr texinfo gmp grub-pc xorriso"
+echo "- The dependencies to build BlueberryOS: qemu nasm bison flex libmpc mpfr texinfo gmp grub-pc xorriso"
 echo "- Will create 2 directories: build-bintools and build-gcc."
-echo "- Will clone the NerdOS git repository into os"
+echo "- Will clone the BlueberryOS git repository into os"
 if [ $OS == 0 ] || [ $OS == 1 ]
 then
     echo "- Download the brew install script to temp"
@@ -245,7 +245,7 @@ cd os || return
 echo "${tty_bold}${tty_blue}==>${tty_reset} ${tty_bold}Running make & make run"
 make && make run
 echo
-echo "${tty_bold}To run NerdOS, use make run.${tty_reset}"
+echo "${tty_bold}To run BlueberryOS, use make run.${tty_reset}"
 echo "${tty_bold}To rebuild gcc and binutils run make.${tty_reset}"
 echo
 echo "To add the $TARGET binaries into your path, place this into your $(echo $SHELL).rc"

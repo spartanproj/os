@@ -1,6 +1,6 @@
 ---
 name: Enhancement
-about: You want something more from NerdOS
+about: You want something more from BlueberryOS
 title: "[XTRA]"
 labels: enhancement
 assignees: ''

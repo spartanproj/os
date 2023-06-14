@@ -1,4 +1,4 @@
-# NerdOS
+# BlueberryOS
 
 ### Good luck with install (you'll need it)
 
@@ -181,7 +181,7 @@ gcc -m32 -Q --help=target | grep march
 - If you do not have access to a fully-fledged display, then run
 - Establish if you are on an x86 computer (32-bit or 64-bit). If not, virtualise! It does not work on other architectures.
 - You are on x86...
-- If so, get out your nerd hat, read through the messages, and attempt to self-compile. If you cannot, then 
+- If so, get out your blueberry hat, read through the messages, and attempt to self-compile. If you cannot, then 
 
 #### I don't have make!
 

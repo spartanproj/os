@@ -10,5 +10,5 @@
 
 ## Reporting a Vulnerability
 
-Use an issue or talk to someone with the nerd role on the discord.
+Use an issue or talk to someone with the blueberry role on the discord.
 the link is : https://discord.gg/R5bgPEkFMe

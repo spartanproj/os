@@ -1,4 +1,4 @@
-CFLAGS=-Wno-stringop-overflow
+CFLAGS=-Wno-stringop-overflow -Wno-discarded-qualifiers
 first: 
 	chmod +x shell/run.sh
 	shell/run.sh
@@ -7,7 +7,6 @@ elfgcc:
 	libc/random/rand.sh libc/random/rand
 	nasm -f elf32 boot/boot.asm -o boot/boot.o
 	i686-elf-gcc -m32 -ffreestanding -Ilibc -c kernel/kernel.c -o kc.o $(CFLAGS)
-	i686-elf-gcc -m32 -ffreestanding -Ilibc -c kernel/kernel.c -S -o kc.S
 	i686-elf-ld -m elf_i386 -T boot/link.ld -o kernel.bin boot/boot.o kc.o
 run:
 	qemu-system-i386 -rtc base=localtime -kernel kernel.bin

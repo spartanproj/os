@@ -7,7 +7,7 @@ nodes roots={
     0,"Hello from root"
 };
 nodes info={
-    1,"OS: NerdOS \n Version: v0.03 \"basalt\" \n Devs: werdl;thisiscoding1234 \n \
+    1,"OS: BlueberryOS \n Version: v0.03 \"basalt\" \n Devs: werdl;thisiscoding1234 \n \
 Github: spartanproj/os"
 };
 typedef struct fs {

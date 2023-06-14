@@ -10,20 +10,22 @@
 #include <fs/fs.h> // journals
 #include <time/time.h> // wrappers for time
 // #include <file/file.h> failed file implementation
-#include <const.h> // NerdOS constants
+#include <const.h> // BlueberryOS constants
 #include <mem/alloc.h> // kmalloc
 #include <mem/memcmp.h> // memcmp
 #include <file/fs_struct.h> // filesystem structs and funcs
 #include <file/initrd.h> // compiler generated file
 #include "util/splash.h" // generate random splash
 #include <sys/cpuid.h> // cpuid utils
-#include <nerd.h> // consts
+#include <blueberry.h> // consts
 #include <io/clr.h> // clrs
 //#include "util/cmd.h" // checktype()
-// That is on line 229, so constants from this file are accessible.
+// cmd.h is included is on line 229, so constants from this file are accessible.
 int gui();
 int text_edit();
 int move(const char * inp);
+void checktype();
+int dellast();
 char * history;
 int counter=0;
 bool printrn=false;
@@ -158,13 +160,30 @@ int kmain(void)
 	}
 	term_init();
 	setclr(2,0);
-	printf(" _   _                  _  _____  _____           \n| \\ | |                | ||  _  |/  ___|          \n|  \\| |  ___  _ __   __| || | | |\\ `--.           \n| . ` | / _ \\| '__| / _` || | | | `--. \\          \n| |\\  ||  __/| |   | (_| |\\ \\_/ //\\__/ /          \n\\_| \\_/ \\___||_|    \\__,_| \\___/ \\____/           \n\n\n  ___                 _____   ____   _____  _____ ");
-	printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
+	// printf(" _   _                  _  _____  _____           \n| \\ | |                | ||  _  |/  ___|          \n|  \\| |  ___  _ __   __| || | | |\\ `--.           \n| . ` | / _ \\| '__| / _` || | | | `--. \\          \n| |\\  ||  __/| |   | (_| |\\ \\_/ //\\__/ /          \n\\_| \\_/ \\___||_|    \\__,_| \\___/ \\____/           \n\n\n  ___                 _____   ____   _____  _____ ");
+	// printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
+	printf("\n\
+            JFFFFFFFFFFb      \n\
+         >>ibF[eebJbt>i>IbFJ     \n\
+      2JeiIetbbFFF2EbF2I2bIEFJ      __                     __  __\n\
+     iIeIJFe> >>EEbIeitkFiiJJeJ    |__)|    _ |_  _  _ _  /  \\(_ \n\
+    EIeJJ>JfJIeeiebFFEJ!fJiiIie2   |__)||_|(-`|_)(-`| | \\/\\__/__)\n\
+    2Itie>>>>eeeeie2J2ibeiifFeJ2                        /     \n\
+    Je>eI>>I>iiie>BFI2FkFEJffJJe    \n\
+     eti>>.>..>>IIJt>F>FFeeeIJeJ   \n\
+     ettti>iii>>>iietJJJJeJJeFe    \n\
+      beIIiIeIIIeeeeIJFeJJeee2     \n\
+        2ttIitetIiiiIItIIIeJ       \n\
+            QteIIIiIIFte         \n\                   
+");
+
+ 
+
 	setclr(13,0);
-	printf("\n\n\n Welcome to NerdOS. Enjoy your stay :)");
+	printf("\n\n\n Welcome to BlueberryOS. Enjoy your stay :)");
 	if (WARN && sudo) {
 		setclr(12,0);
-		printf("     Caution: you are running as root.\n");
+		printf("    Caution: you are running as root.\n");
 	} else {
 		printf("\n");
 	}
@@ -175,8 +194,8 @@ int kmain(void)
 	printf(splasht);
 	setclr(defcol(),0);
 	printf("\n");
-	printf("__nerd__==");
-	printf(__nerd__?"true\n":"false\n");
+	printf("__blueberry__==");
+	printf(__blueberry__?"true\n":"false\n");
 	printf(info.contents);
 	sleep(strlen(splasht)/10);
 
@@ -191,6 +210,10 @@ int kmain(void)
 	printf("\n");
 	fsinit();
 	kprintd("Initialise journaling: ",1);
+	printf("\n");
+	kprintd("Get initrd: ",1);
+	printf("\n");
+	kprintd("srand(): ",1);
 	printf("\n");
 	mse_nl();
 	setclr(10,0);
