@@ -61,4 +61,52 @@ int one() {
     prtf("                      .&@@@@@&*                       *&@@@@@&. ");
     prtf("                          *@@@@@@@@@&%/,.   .,/#&@@@@@@@@@*    ");
 }
-
+void art() {
+setclr(GREEN,0);
+	printf("       £  *% $!   SHALKJH}   *)\n");
+	printf("           %  !*)& !VHDI\n");
+	setclr(DARK_BLUE,0);
+	// printf(" _   _                  _  _____  _____           \n| \\ | |                | ||  _  |/  ___|          \n|  \\| |  ___  _ __   __| || | | |\\ `--.           \n| . ` | / _ \\| '__| / _` || | | | `--. \\          \n| |\\  ||  __/| |   | (_| |\\ \\_/ //\\__/ /          \n\\_| \\_/ \\___||_|    \\__,_| \\___/ \\____/           \n\n\n  ___                 _____   ____   _____  _____ ");
+	// printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
+	
+	printf("             !");
+	printf("&F");
+	setclr(GREEN,0);
+	printf(">");
+	setclr(BLUE,0);
+	printf(">");
+	setclr(GREEN,0);
+	printf("*%");
+	setclr(DARK_BLUE,0);
+	printf("!");
+	setclr(BLUE,0);
+	printf("\n            ");
+	//b
+	printf("JF");
+	setclr(DARK_BLUE,0);
+	printf("FFF");
+	setclr(BLUE,0);
+	printf("FFF");
+	setclr(DARK_BLUE,0);
+	printf("F");
+	setclr(BLUE,0);
+	printf("FF");
+	setclr(DARK_BLUE,0);
+	printf("b");
+	setclr(BLUE,0);
+	printf("\n\
+         >>ibF[eebJbt>i>IbFJ     \n ");
+	setclr(DARK_BLUE,0);
+	printf("\
+      2JeiIetbbFFF2EbF2I2bIEFJ      __                    __  __\n\
+     iIeIJFe> >>EEbIeitkFiiJJeJ    |__)|    _ |_  _  _ _  /  \\(_ \n\
+    EIeJJ>JfJIeeiebFFEJ!fJiiIie2   |__)||_|(-`|_)(-`| | \\/\\__/__)\n\
+    2Itie>>>>eeeeie2J2ibeiifFeJ2                        /     \n\
+    Je>eI>>I>iiie>BFI2FkFEJffJJe    \n\
+     eti>>.>..>>IIJt>F>FFeeeIJeJ   \n\
+     ettti>iii>>>iietJJJJeJJeFe    \n\
+      beIIiIeIIIeeeeIJFeJJeee2     \n\
+        2ttIitetIiiiIItIIIeJ       \n\
+            QteIIIiIIFte         \n\
+");
+}

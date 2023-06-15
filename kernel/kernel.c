@@ -11,7 +11,7 @@
 #include "keys.h" // keymap
 #include <random/rand.h> // compile-time random
 #include "games/tic.c" // tic tac toe
-#include "util/ascii.h" // ascii art
+#include "util/ascii.h" // ascii art at boot
 #include "games/21.c" // WIP 21 game
 #include <fs/fs.h> // journals
 #include <time/time.h> // wrappers for time
@@ -26,7 +26,7 @@
 #include <blueberry.h> // consts
 #include <io/clr.h> // clrs
 //#include "util/cmd.h" // checktype()
-// cmd.h is included is on line 229, so constants from this file are accessible.
+// cmd.h is included is on line 257, so constants from this file are accessible.
 int gui();
 int text_edit();
 int move(const char * inp);
@@ -165,26 +165,7 @@ int kmain(void)
 		typed[y]="";
 	}
 	term_init();
-	setclr(DARK_BLUE,0);
-	// printf(" _   _                  _  _____  _____           \n| \\ | |                | ||  _  |/  ___|          \n|  \\| |  ___  _ __   __| || | | |\\ `--.           \n| . ` | / _ \\| '__| / _` || | | | `--. \\          \n| |\\  ||  __/| |   | (_| |\\ \\_/ //\\__/ /          \n\\_| \\_/ \\___||_|    \\__,_| \\___/ \\____/           \n\n\n  ___                 _____   ____   _____  _____ ");
-	// printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
-	printf("\n\
-            JFFFFFFFFFFb      \n\
-         >>ibF[eebJbt>i>IbFJ     \n\
-      2JeiIetbbFFF2EbF2I2bIEFJ      __                     __  __\n\
-     iIeIJFe> >>EEbIeitkFiiJJeJ    |__)|    _ |_  _  _ _  /  \\(_ \n\
-    EIeJJ>JfJIeeiebFFEJ!fJiiIie2   |__)||_|(-`|_)(-`| | \\/\\__/__)\n\
-    2Itie>>>>eeeeie2J2ibeiifFeJ2                        /     \n\
-    Je>eI>>I>iiie>BFI2FkFEJffJJe    \n\
-     eti>>.>..>>IIJt>F>FFeeeIJeJ   \n\
-     ettti>iii>>>iietJJJJeJJeFe    \n\
-      beIIiIeIIIeeeeIJFeJJeee2     \n\
-        2ttIitetIiiiIItIIIeJ       \n\
-            QteIIIiIIFte         \n\
-");
-
- 
-
+	art(); // from ascii.h
 	setclr(13,0);
 	printf("\n\n\n Welcome to BlueberryOS. Enjoy your stay :)");
 	if (WARN && sudo) {
