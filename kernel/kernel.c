@@ -1,3 +1,9 @@
+/*
+    This file is part of BlueberryOS
+    Written by: werdl
+    Target: x86 32bit
+    Info: github.com/spartanproj/os
+*/
 #include <kernel/idt.h> // IDT
 #include <stdio.h> // printf and tty
 #include <util.h> // various wrappers, atoi, itoa
@@ -159,7 +165,7 @@ int kmain(void)
 		typed[y]="";
 	}
 	term_init();
-	setclr(2,0);
+	setclr(DARK_BLUE,0);
 	// printf(" _   _                  _  _____  _____           \n| \\ | |                | ||  _  |/  ___|          \n|  \\| |  ___  _ __   __| || | | |\\ `--.           \n| . ` | / _ \\| '__| / _` || | | | `--. \\          \n| |\\  ||  __/| |   | (_| |\\ \\_/ //\\__/ /          \n\\_| \\_/ \\___||_|    \\__,_| \\___/ \\____/           \n\n\n  ___                 _____   ____   _____  _____ ");
 	// printf("\n / _ \\               |  _  | / ___| |  _  |/  ___|\n/ /_\\ \\ _ __   __  __ \\ V / / /___  | | | |\\ `--. \n|  _  || '_ \\  \\ \\/ / / _ \\ | ___ \\ | | | | `--. \n| | | || | | |  >  < | |_| || \\_/ | \\\\_/ //\\__/ /\n\\_| |_/|_| |_| /_/\\_\\_____/\\_____/  \\___/ \\____/ ");
 	printf("\n\
@@ -197,7 +203,7 @@ int kmain(void)
 	printf("__blueberry__==");
 	printf(__blueberry__?"true\n":"false\n");
 	printf(info.contents);
-	sleep(strlen(splasht)/10);
+	sleep(strlen(splasht)/3);
 
 	clear();
 	kprintd("Boot into kernel: ",1);

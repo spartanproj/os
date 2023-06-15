@@ -1,3 +1,9 @@
+/*
+    This file is part of BlueberryOS
+    Written by: werdl
+    Target: x86 32bit
+    Info: github.com/spartanproj/os
+*/
 #include "keyboard_map.h"
 #define true 1
 #define false 0

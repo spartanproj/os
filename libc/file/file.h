@@ -1,3 +1,9 @@
+/*
+    This file is part of BlueberryOS
+    Written by: werdl
+    Target: x86 32bit
+    Info: github.com/spartanproj/os
+*/
 #include "alloc.h"
 #include "../mem/memcmp.h"
 file newfile(char name[8], char contents[8]) {

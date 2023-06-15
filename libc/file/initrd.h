@@ -35,20 +35,20 @@ void insert(file_t data) {
    link->next = head;
    head = link;
 }
-file_t fil_test1txt;file_t fil_userconf;file_t fil_colorconf;file_t fil_test2txt;file_t fil_boot_timeconf;void createfiles() {
+file_t fil_test1txt;file_t fil_test2txt;file_t fil_colorconf;file_t fil_boot_timeconf;file_t fil_userconf;void createfiles() {
 create_readonly("hellO!\n\
  hi","test1.txt",&fil_test1txt);
 insert(fil_test1txt);
 
-create_readonly("root","user.conf",&fil_userconf);
-insert(fil_userconf);
-
-create_readonly("PINK","color.conf",&fil_colorconf);
-insert(fil_colorconf);
-
 create_readonly("bjasbj","test2.txt",&fil_test2txt);
 insert(fil_test2txt);
 
+create_readonly("BLUE","color.conf",&fil_colorconf);
+insert(fil_colorconf);
+
 create_readonly("5","boot_time.conf",&fil_boot_timeconf);
 insert(fil_boot_timeconf);
+
+create_readonly("root","user.conf",&fil_userconf);
+insert(fil_userconf);
 }

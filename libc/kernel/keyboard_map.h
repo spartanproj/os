@@ -1,3 +1,9 @@
+/*
+    This file is part of BlueberryOS
+    Written by: werdl
+    Target: x86 32bit
+    Info: github.com/spartanproj/os
+*/
 /* The following array is taken from 
     http://www.osdever.net/bkerndev/Docs/keyboard.htm
    All credits where due

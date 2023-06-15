@@ -1,3 +1,9 @@
+/*
+    This file is part of BlueberryOS
+    Written by: werdl
+    Target: x86 32bit
+    Info: github.com/spartanproj/os
+*/
 void* memmove(void* dstptr, const void* srcptr, size_t size) {
 	unsigned char * dst = (unsigned char *) dstptr;
 	const unsigned char * src = (const unsigned char *) srcptr;

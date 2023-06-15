@@ -1,3 +1,9 @@
+/*
+    This file is part of BlueberryOS
+    Written by: werdl
+    Target: x86 32bit
+    Info: github.com/spartanproj/os
+*/
 void cpuid(int *peax, int *pebx, int *pecx, int *pedx)
 {
     __asm(

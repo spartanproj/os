@@ -1,3 +1,9 @@
+/*
+    This file is part of BlueberryOS
+    Written by: werdl
+    Target: x86 32bit
+    Info: github.com/spartanproj/os
+*/
 i,j,k,x,y,o,N;
 main(){float z[1760],a
 #define R(t,x,y) f=x;x-=ty

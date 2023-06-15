@@ -1,3 +1,9 @@
+/*
+    This file is part of BlueberryOS
+    Written by: werdl
+    Target: x86 32bit
+    Info: github.com/spartanproj/os
+*/
 void printtime(bool seconds) {
     int byte;
     write_port(0x70,(0 << 7)|0x04);

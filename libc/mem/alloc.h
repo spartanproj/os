@@ -1,3 +1,9 @@
+/*
+    This file is part of BlueberryOS
+    Written by: werdl
+    Target: x86 32bit
+    Info: github.com/spartanproj/os
+*/
 extern int end;
 int placement_addr=(int)&end;
 int kmalloc_internal(int sz, int align, int * phys) {
