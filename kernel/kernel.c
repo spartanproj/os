@@ -165,7 +165,9 @@ int kmain(void)
 		typed[y]="";
 	}
 	term_init();
-	art(); // from ascii.h
+	// art(); // from ascii.h
+	#include "util/test.h"
+	test1();
 	setclr(13,0);
 	printf("\n\n\n Welcome to BlueberryOS. Enjoy your stay :)");
 	if (WARN && sudo) {
