@@ -1,5 +1,5 @@
 val=17
-clrsorder=["white","light_grey","dark_grey","black","yellow","green","light_green","light_red","red","brown","magenta","lilac","cyan","dark_cyan","dark_blue","blue"]
+clrsorder=["white","light_grey","dark_grey","black","yellow","dark_green","green","light_red","deep_red","brown","magenta","lilac","cyan","dark_cyan","dark_blue","blue"]
 # clrs=[0xFFFFFF,0xAAAAAA,0x555555,0x000000,0xFFFF55,0x55FF55,0xAA0000,0xAA5500,0xAA00AA,0xFF55FF,0x55FFFF,0x00AAAA,0x0000AA,0x5555FF]
 # def clr(valu):
 #     """Return the nearest color to valu"""
@@ -36,8 +36,7 @@ def closest_color(rgb):
         color_diff = sqrt((r - cr)**2 + (g - cg)**2 + (b - cb)**2)
         color_diffs.append((color_diff, color))
     return min(color_diffs)[1]
-print(clrsorder[COLORS.index(closest_color((234,204,255)))])
-from PIL import Image,ImageDraw,ImageFont
+from PIL import Image
 import math
 from clr import *
 def getSomeChar(h):
@@ -47,18 +46,21 @@ def getSomeChar(h):
     mul = l/256
     return charArr[math.floor(h*mul)]
 def draw(image):
-    image = Image.open(f"{image}.jpg")
-    scaleFac = 0.8
-    charWidth = 10
-    charHeight = 18
-    w,h = image.size
-    image = image.resize((int(scaleFac*w),int(scaleFac*h*(charWidth/charHeight))),Image.NEAREST)
-    w,h = image.size
+    image = Image.open(f"{image}")
+    we,he = image.size
     pixels = image.load()
-    for i in range(h):
-        for j in range(w):
-            r,g,b = pixels[j,i]
-            grey = int((r/3+g/3+b/3))
+    print("void generatedart() {printf(\" \");")
+    for i in range(he):
+        for j in range(we):
+            pixel=pixels[j,i]
+            r,g,bl=pixel[0],pixel[1],pixel[2]
+            grey = int((r/3+g/3+bl/3))
             pixels[j,i] = (grey,grey,grey)
-            exec(f"o.{clrsorder[COLORS.index(closest_color((r,g,b)))]}()")
-draw("kernel/util/parrot")
+            exec(f"b.{clrsorder[COLORS.index(closest_color((r,g,bl)))]}()")
+            print("printf(\" \");")
+        nl()
+    print("}")
+import os
+for filename in os.scandir("kernel/util/conv"):
+    if filename.is_file():
+        draw(filename.path)

@@ -25,6 +25,7 @@
 #include <sys/cpuid.h> // cpuid utils
 #include <blueberry.h> // consts
 #include <io/clr.h> // clrs
+#include "util/asciigen.h" // file python generates for me, contains ASCII art. Wrote a little helper script that takes a .png as input (usually 16x16) then outputs it as setclr and printf calls.
 //#include "util/cmd.h" // checktype()
 // cmd.h is included is on line 257, so constants from this file are accessible.
 int gui();
@@ -81,7 +82,8 @@ void keyboard_handler_main(void)
 			return;
 		} else if (keys(keycode)=="BKSP") {
 			dellast();
-			write_to(' ', terminal_color, terminal_column--, terminal_row);
+			terminal_column--;
+			write_to(' ', terminal_color, terminal_column, terminal_row);
 			return;
 		} else {
 			typed[counter]=keys(keycode);
@@ -165,11 +167,10 @@ int kmain(void)
 		typed[y]="";
 	}
 	term_init();
-	// art(); // from ascii.h
-	#include "util/test.h"
-	test1();
+
+	generatedart();
 	setclr(13,0);
-	printf("\n\n\n Welcome to BlueberryOS. Enjoy your stay :)");
+	printf("Welcome to BlueberryOS. Enjoy your stay :)");
 	if (WARN && sudo) {
 		setclr(12,0);
 		printf("    Caution: you are running as root.\n");
