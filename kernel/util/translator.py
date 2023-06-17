@@ -37,14 +37,7 @@ def closest_color(rgb):
         color_diffs.append((color_diff, color))
     return min(color_diffs)[1]
 from PIL import Image
-import math
 from clr import *
-def getSomeChar(h):
-    chars  = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-                          _+~<>i!lI;:,\"^`'. "[::-1]
-    charArr = list(chars)
-    l = len(charArr)
-    mul = l/256
-    return charArr[math.floor(h*mul)]
 def draw(image):
     image = Image.open(f"{image}")
     we,he = image.size
