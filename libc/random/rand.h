@@ -12,5 +12,5 @@ void srand(unsigned int seed)
     next = seed;
 }
 unsigned int rnd=
-1686983254
+1687972351
 ;

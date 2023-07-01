@@ -221,7 +221,7 @@ int kmain(void)
 	// itoa(rand(),buff,10);
 	// printf(buff);
 
-	printf("Debugging ON, OFF or SOME?\n");
+	printf("Debugging ON (keylogger), OFF or SOME (warnings)?\n");
 
 	writefs("",'w',0);
 	writefs("",'w',1);

@@ -28,7 +28,7 @@ COLORS = [
     (85, 85, 255)
 ]
 
-def closest_color(rgb):
+def closest_color(rgb: tuple):
     r, g, b = rgb
     color_diffs = []
     for color in COLORS:

@@ -142,12 +142,25 @@ style Basics fill:#0a6127
 ### Compiling
 
 #### You will need:
-
 - A Unix-like environment (Windows no, BSD variants probably, MacOS yes, Cygwin yes, Linux yes, other old Unix variants (eg Irix) probably?? maybe source install for packages)
 - a gcc cross compiler (and binutils) for i386 or i686 ([here](https://wiki.osdev.org/GCC_Cross-Compiler)'s how to get that)
 - qemu-system-i386 (`brew install -y qemu-system-i386` or the package manager on your distro (check the internet if it's not working.))
 - patience
-
+> #### Testing
+> 
+> We regularly test on:
+> - Linux (Debian and Ubuntu) @werdl uses this, so this will almost certainly work
+> - Linux mint @thisiscoding1234
+> - MacOS by @uimaxbai
+>
+> When we have spare time on our hands:
+> - msys2 (bug with loader means compilation is much harder, wouldn't recommend)
+> - Cygwin
+> - WSL
+#### Notes for those on MacOS
+- You might say "Aha! I have `gcc` preinstalled!". You don't. You have a wrapper around clang. The reasoning behind this can be left up to people more important than myself.
+- So you will need `gcc` *normally*, as well as your cross-compiled version
+- I'm sure there will be a way!
 #### I can't compile the cross compiler...
 - It is a fair chance that with the right flags that your system gcc is OK (not you MacOS users).
 - If you see something like this
