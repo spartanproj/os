@@ -2,7 +2,7 @@ cd ~
 cd os
 cd initrd
 
-echo --- BlueBerryOS configureator ---
+echo --- BlueBerryOS configurator ---
 echo press enter for the defaults
 
 # themes 
@@ -24,8 +24,8 @@ fi
 fi
 
 if [ "$mode" = "light" ]; then
-echo the light mode options are coming soon, so let\'s just go for the default blue dark theme so you don\'t get a defenceive BSOD
-echo you can always edit your terminal colors to be light mode \( or even dark mode! \) as you want with make term
+echo the light mode options are coming soon, so let\'s just go for the default blue dark theme so you don\'t get a defensive BSOD
+echo you can always edit your terminal colours to be light mode \( or even dark mode! \) as you want with make term
 # this is for later:
 # read theme
 # "${theme^^}"> color.conf
@@ -53,4 +53,4 @@ echo you like to take risks, don\'t you?
 fi
 
 
-echo thank you for using this configureator to make BlueBerryOS work to your preferences
+echo thank you for using this configurator to make BlueBerryOS work to your preferences!
