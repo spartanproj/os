@@ -57,11 +57,11 @@ echo -e "${BOLD}press enter for the defaults${ENDCOLOR}"
 echo -e "${ITAL}-- User selection --${ENDCOLOR}"
 echo -e "what username would you like to have? \( root is the root account -- RECOMMENDED ONLY FOR TESTING\!\! \)"
 read user
-"$user"> user.conf
+"$user" > user.conf
 
 if [ "$mode" = "" ]; then
 echo YOU\'RE A BLUEBERRY\!\!\!\!
-"blueberry"> user.conf
+"blueberry" > user.conf
 fi
 
 if [ "$mode" = "root" ]; then
