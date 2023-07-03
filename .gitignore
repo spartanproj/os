@@ -26,3 +26,5 @@ iso
 __pycache__
 user.conf
 color.conf
+initrd/user.conf
+initrd/color.conf
