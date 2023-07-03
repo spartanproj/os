@@ -24,3 +24,5 @@ lto-plugin
 kc.S
 iso
 __pycache__
+initrd/user.conf
+initrd/color.conf
