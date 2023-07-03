@@ -71,5 +71,5 @@ fi
 
 clear
 echo -e "${UNDER} --- BlueBerryOS configurator --- ${ENDCOLOR}"
-
 echo thank you for using this configurator to make BlueBerryOS work to your preferences!
+echo to re-run enter: bash os_config.sh in the main os directory

@@ -250,3 +250,5 @@ echo "${tty_bold}To rebuild gcc and binutils run make.${tty_reset}"
 echo
 echo "To add the $TARGET binaries into your path, place this into your $(echo $SHELL).rc"
 echo "${tty_bold}export PATH="$HOME/opt/cross/bin:$PATH"${tty_reset}"
+
+bash os_config.sh
