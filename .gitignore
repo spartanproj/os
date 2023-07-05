@@ -28,3 +28,7 @@ user.conf
 color.conf
 initrd/user.conf
 initrd/color.conf
+libc/file/initrd.h
+.gitignore
+libc/random/rand.h
+libc/file/initrd.h
