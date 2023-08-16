@@ -2,25 +2,35 @@ the theme names are in capitals for the color.conf file.
 
 # dark:
 
+<table>
+<tr>
+ <td>
 
-  ## BLUE:
+  ## BLUE: 
 
         is default
         computer: Dark Cyan
         user: Cyan
 ![blue theme](./img/BLUE.png)
 
-  ### TERM:
+</td> <td>
+
+  ### TERM: 
 
         computer: Dark Green
         user: Green
 ![term theme](./img/TERM.png)
 
-  ### PINK:
+</td> <td>
+
+  ### PINK: 
 
         computer: Magenta
         user: Lilac
 ![pink theme](./img/PINK.png)
+
+</td> </tr>
+<tr> <td> 
 
   ### BORE:
 
@@ -28,11 +38,15 @@ the theme names are in capitals for the color.conf file.
         user: Light Grey
 ![bore theme](./img/BORE.png)
 
+</td> <td>
+
    ### ANGER:
 
         computer: Deep Red
         user: LIGHT RED
 ![blue theme](./img/ANGER.png)
+
+</td> <td>
 
    ### FIRE:
 
@@ -40,12 +54,18 @@ the theme names are in capitals for the color.conf file.
         user: Yellow
 ![fire theme](./img/FIRE.png)
 
+</td> </tr>
+<tr> <td> 
+
    ### RETRO:
 
         computer: Dark Green
         user: Yellow
 ![retro theme](./img/RETRO.png)
 
+</td> </tr>
+
+</table>
 
 # light:
 
