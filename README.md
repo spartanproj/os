@@ -1,5 +1,6 @@
-# BlueberryOS
 
+# BlueberryOS
+## Development on this branch is inactive, see [dev](https://github.com/spartanproj/os/tree/dev)
 ### Good luck with install (you'll need it)
 
 #### To install: 
