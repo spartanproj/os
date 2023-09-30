@@ -28,15 +28,9 @@
 #include "util/asciigen.h" // file python generates for me, contains ASCII art. Wrote a little helper script that takes a .png as input (usually 16x16) then outputs it as setclr and printf calls.
 //#include "util/cmd.h" // checktype()
 // cmd.h is included is on line 257, so constants from this file are accessible.
-int gui();
-int text_edit();
-int move(const char * inp);
-void checktype();
-int dellast();
-char * history;
 int counter=0;
 bool printrn=false;
-bool debug=WARN;
+bool debug=false;
 int x_gui = 0;
 int y_gui = 0;
 int cmdstyped = 0;
@@ -46,6 +40,12 @@ char typed2[1024];
 char * position[3][3]={{"0,0","1,0","2,0"},
 					   {"0,1","1,1","2,1"},
 					   {"0,2","1,2","2,2"}}; // which gui box you are on
+int gui();
+int text_edit();
+int move(const char * inp);
+void checktype();
+int dellast();
+char * history;
 
 void keyboard_handler_main(void)
 {

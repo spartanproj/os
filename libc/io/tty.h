@@ -4,7 +4,7 @@
     Target: x86 32bit
     Info: github.com/spartanproj/os
 */
-
+#define TTY_H
 /* Hardware text mode color constants. */
 enum vga_color {
 	BLACK = 0,

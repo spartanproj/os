@@ -40,7 +40,7 @@ create_readonly("hellO!\n\
  hi","test1.txt",&fil_test1txt);
 insert(fil_test1txt);
 
-create_readonly("root","user.conf",&fil_userconf);
+create_readonly("blueberry\n","user.conf",&fil_userconf);
 insert(fil_userconf);
 
 create_readonly("BLUE","color.conf",&fil_colorconf);

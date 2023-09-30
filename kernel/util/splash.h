@@ -4,7 +4,7 @@ char * splash() {
     char * msgs[13] = {
         "Whoops, what a fine mess you're in!",
         "Time past hourmin:54? Reboot :)",
-        "42. 42. 42. (if you don't get this, type Alt+2 then quit)",
+        "42",
         "Wow, compilation successful! Didn't expect that!",
         "Ach, an environment with no Python, no clang, no Go. I love it already!",
         "StackOverflow was useless in this project.",
@@ -13,8 +13,8 @@ char * splash() {
         "Favourite gcc flag? Mine is -w.",
         "Life! Don't talk to me about life! - Marvin TPA",
         "Light mode = BSOD. Don't argue",
-        "Can I print this smiley - 🙂. Ah no, I can't. :) it is then.",
-        "90% bug free! (Thanks Mojang ;-))"
+        "Guess the emoji - ⌨️",
+        "90% bug free!"
     };
     return msgs[random_number_splash-1];
 }
