@@ -11,7 +11,7 @@
 #if !defined(__i386__)
 #error "Enjoy your debugging :)"
 #endif
- void printf(const char * data); 
+ void kprintf(const char * data); 
 
 
 void write_to(char c, uint8_t color, size_t x, size_t y) 
@@ -47,9 +47,9 @@ void write(const char * data, size_t size, bool magic)
 }
 void clear(void) {
 	term_init();
-	printf(" ");
+	kprintf(" ");
 }
-void printf(const char * data) 
+void kprintf(const char * data) 
 {
 	if (terminal_row>=VGA_HEIGHT) {
 		clear();

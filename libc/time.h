@@ -9,77 +9,77 @@ void printtime(bool seconds) {
     write_port(0x70,(0 << 7)|0x04);
 	byte=read_port(0x71);
     if (byte<10) {
-        printf("0");
+        kprintf("0");
     }
-	printhx(byte);
-	printf(":");
+	kprinthx(byte);
+	kprintf(":");
 
 
     write_port(0x70,(0 << 7)|0x02);
 	byte=read_port(0x71);
     if (byte<10) {
-        printf("0");
+        kprintf("0");
     }
-	printhx(byte);
+	kprinthx(byte);
     if (seconds) {
 
-    printf(":");
+    kprintf(":");
     write_port(0x70,(0 << 7)|0x00);
 	byte=read_port(0x71);
     if (byte<10) {
-        printf("0");
+        kprintf("0");
     }
-	printhx(byte);
+	kprinthx(byte);
     }
 }
 void printdate() {
     printtime(true);
-    printf(" - ");
+    kprintf(" - ");
     int byte;
     write_port(0x70,(0 << 7)|0x06);
 	byte=read_port(0x71);
 	switch (byte-0x01) {
-        case 0x01:printf("Monday");goto end;
-        case 0x02:printf("Tuesday");goto end;
-        case 0x03:printf("Wednesday");goto end;
-        case 0x04:printf("Thursday");goto end;
-        case 0x05:printf("Friday");goto end;
-        case 0x06:printf("Saturday");goto end;
-        case 0x00:printf("Sunday");goto end;
+        case 0x01:kprintf("Monday");goto end;
+        case 0x02:kprintf("Tuesday");goto end;
+        case 0x03:kprintf("Wednesday");goto end;
+        case 0x04:kprintf("Thursday");goto end;
+        case 0x05:kprintf("Friday");goto end;
+        case 0x06:kprintf("Saturday");goto end;
+        case 0x00:kprintf("Sunday");goto end;
     }
     end:
-	printf(" ");
+	kprintf(" ");
 
     write_port(0x70,(0 << 7)|0x07);
 	byte=read_port(0x71);
-	printhx(byte);
-	printf(" ");
+	kprinthx(byte);
+	kprintf(" ");
 
     write_port(0x70,(0 << 7)|0x08);
 	byte=read_port(0x71);
 	switch (byte) {
-        case 1:printf("January");goto end2;
-        case 2:printf("February");goto end2;
-        case 3:printf("March");goto end2;
-        case 4:printf("April");goto end2;
-        case 5:printf("May");goto end2;
-        case 6:printf("June");goto end2;
-        case 7:printf("July");goto end2;
-        case 8:printf("August");goto end2;
-        case 9:printf("September");goto end2;
-        case 10:printf("October");goto end2;
-        case 11:printf("November");goto end2;
-        case 12:printf("December");goto end2;
+        case 1:kprintf("January");goto end2;
+        case 2:kprintf("February");goto end2;
+        case 3:kprintf("March");goto end2;
+        case 4:kprintf("April");goto end2;
+        case 5:kprintf("May");goto end2;
+        case 6:kprintf("June");goto end2;
+        case 7:kprintf("July");goto end2;
+        case 8:kprintf("August");goto end2;
+        case 9:kprintf("September");goto end2;
+        case 10:kprintf("October");goto end2;
+        case 11:kprintf("November");goto end2;
+        case 12:kprintf("December");goto end2;
     }
     end2:
-    printf(" ");
+    kprintf(" ");
     write_port(0x70,(0 << 7)|0x32);
 	byte=read_port(0x71);
-	printhx(byte);
+	kprinthx(byte);
     write_port(0x70,(0 << 7)|0x09);
 	byte=read_port(0x71);
-	printhx(byte);
-    printf("\n");
+	kprinthx(byte);
+    kprintf("\n");
 	mse_nl();
 }
 void sleep(int seconds) {
@@ -117,5 +117,5 @@ void time() {
 
 
 
-    printn(total);
+    kprintn(total);
 }

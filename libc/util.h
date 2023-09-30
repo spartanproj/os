@@ -81,21 +81,25 @@ int itoa(int value, char *sp, int radix)
         *sp++ = *--tp;
     return len;
 }
-void printn(int num) {
+void dellast(void);
+void kprintn(int num) {
     char buf[15];
     itoa(num,buf,10);
-    printf(buf);
+    kprintf(buf);
+    terminal_column--;
+    kprintf(" ");
+    terminal_column--;
 }
-void printh(int num) {
+void kprinth(int num) {
     char buf[15];
     itoa(num,buf,16);
-    printf("0x");
-    printf(buf);
+    kprintf("0x");
+    kprintf(buf);
 }
-void printhx(int num) {
+void kprinthx(int num) {
     char buf[15];
     itoa(num,buf,16);
-    printf(buf);
+    kprintf(buf);
 }
 char *strcat(char *s1, const char *s2)
 {
