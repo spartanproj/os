@@ -6,7 +6,7 @@
 */
 #define __blueberry__ true
 #define blueberry true
-
+#define _BLUEBERRY_H
 #ifndef __i386__
 #error "Oh no. Debug time!"
 #endif

@@ -17,6 +17,7 @@ global load_idt
 
 extern kmain 		;this is defined in the c file
 extern keyboard_handler_main
+extern kinit
 read_port:
 	mov edx, [esp + 4]
 			;al is the lower 8 bits of eax
@@ -42,6 +43,7 @@ keyboard_handler:
 start:
 	cli 				;block interrupts
 	mov esp, stack_space
+	call kinit
 	call kmain
 	hlt 				;halt the CPU
 

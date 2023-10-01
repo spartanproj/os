@@ -1,6 +1,6 @@
-CFLAGS=-Wno-stringop-overflow -Wno-discarded-qualifiers
+CFLAGS=-Wno-stringop-overflow -Wno-discarded-qualifiers -fstack-protector
 
-go: | prep elfgcc run
+go: | prep elfgcc run clean
 
 prep:
 	nasm -f elf32 boot/boot.asm -o boot/boot.o
